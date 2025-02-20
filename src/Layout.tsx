@@ -1,11 +1,18 @@
 import { useState } from "react";
 import { Outlet } from "react-router";
+import Drawer from "./components/Drawer";
 
 const Layout = () => {
+  const [showDrawer, setShowDrawer] = useState(true);
+
   return (
-    <div className="h-screen grid grid-cols-[auto_1fr]">
-      <SideNavbar />
-      <Outlet />
+    <div className="h-screen grid xl:grid-cols-[auto_1fr]">
+      <div className="relative xl:w-80">
+        <Drawer showDrawer={showDrawer} setShowDrawer={setShowDrawer} />
+      </div>
+      <div className=" w-full h-full bg-gray-100 overflow-y-scroll px-2">
+        <Outlet />
+      </div>
     </div>
   );
 };

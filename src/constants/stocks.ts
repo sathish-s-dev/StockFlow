@@ -175,4 +175,68 @@ export const stocks =[
       "exchangeShortName": "STO",
       "type": "stock"
   },
+  {
+      "symbol": "ATCO-B.ST",
+      "name": "Atlas Copco AB",
+      "price": 164.35,
+      "exchange": "Stockholm Stock Exchange",
+      "exchangeShortName": "STO",
+      "type": "stock"
+  },
+  {
+      "symbol": "SSAB-B.ST",
+      "name": "SSAB AB (publ)",
+      "price": 61.88,
+      "exchange": "Stockholm Stock Exchange",
+      "exchangeShortName": "STO",
+      "type": "stock"
+  },
+  {
+      "symbol": "ESSITY-B.ST",
+      "name": "Essity AB (publ)",
+      "price": 284.9,
+      "exchange": "Stockholm Stock Exchange",
+      "exchangeShortName": "STO",
+      "type": "stock"
+  },
+  {
+      "symbol": "NKT.CO",
+      "name": "NKT A/S",
+      "price": 494.4,
+      "exchange": "Copenhagen",
+      "exchangeShortName": "CPH",
+      "type": "stock"
+  },
+  {
+      "symbol": "INDU-C.ST",
+      "name": "AB Industrivärden (publ)",
+      "price": 404.6,
+      "exchange": "Stockholm Stock Exchange",
+      "exchangeShortName": "STO",
+      "type": "stock"
+  },
+  {
+      "symbol": "MTRS.ST",
+      "name": "Munters Group AB (publ)",
+      "price": 147.5,
+      "exchange": "Stockholm Stock Exchange",
+      "exchangeShortName": "STO",
+      "type": "stock"
+  },
+  {
+      "symbol": "TRU.JO",
+      "name": "Truworths International Limited",
+      "price": 7912,
+      "exchange": "Johannesburg",
+      "exchangeShortName": "JNB",
+      "type": "stock"
+  },
+  {
+      "symbol": "ASSA-B.ST",
+      "name": "ASSA ABLOY AB (publ)",
+      "price": 327.9,
+      "exchange": "Stockholm Stock Exchange",
+      "exchangeShortName": "STO",
+      "type": "stock"
+  },
 ]
