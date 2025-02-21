@@ -17,3 +17,7 @@
   body {
     -ms-overflow-style: none;
   }
+
+  /* *, *::before, *::after {
+    border: 1px solid green;
+  } */

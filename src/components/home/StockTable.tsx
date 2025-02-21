@@ -33,7 +33,7 @@ export default function StocksTable() {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {stocks.map((stock) => (
+        {stocks.slice(0,5).map((stock) => (
           <TableRow key={stock.exchangeShortName}>
             <TableCell className="font-medium">
               <Link

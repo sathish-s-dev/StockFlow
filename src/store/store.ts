@@ -3,11 +3,13 @@ import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import { stocksApi } from "@/services/stocksApi";
 import drawerReducer from "@/features/drawerSlice";
+import WatchListReducer from "@/features/watchlistSlice";
 
 export const store = configureStore({
   reducer: {
     [stocksApi.reducerPath]: stocksApi.reducer,
     drawer: drawerReducer,
+    watchlist: WatchListReducer,
   },
 
   middleware: (getDefaultMiddleware) =>

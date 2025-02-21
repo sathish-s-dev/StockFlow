@@ -68,7 +68,7 @@ function MenuButton() {
 
 function TopNavbar() {
   return (
-    <div className="bg-white p-2 py-6 flex justify-between">
+    <div className="bg-white px-6 py-6 flex justify-between sticky top-0 z-10">
       <div>
         <MenuButton />
         <StockSearch />

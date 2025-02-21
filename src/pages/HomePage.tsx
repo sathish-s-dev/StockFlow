@@ -5,7 +5,7 @@ import StockHistorySelection from "@/components/home/StockHistorySelection";
 import ApexChart from "@/components/ui/ApexChart";
 import SectionHeading from "@/components/ui/SectionHeading";
 import SectionWrapper from "@/components/ui/SectionWrapper";
-import TopNavbar from "@/components/home/TopNavBar";
+import TopNavbar from "@/components/TopNavBar";
 import StocksTable from "@/components/home/StockTable";
 
 const Home = () => {
@@ -13,10 +13,9 @@ const Home = () => {
 
   return (
     <main className="flex flex-col gap-4">
-      <TopNavbar />
       <div className="px-4 flex flex-col gap-4 max-w-full">
-        <div className="grid xl:grid-cols-3 gap-4">
-          <SectionWrapper className=" flex flex-col gap-2 xl:col-span-2">
+        <div className="grid md:grid-cols-3 gap-4">
+          <SectionWrapper className=" flex flex-col gap-2 md:col-span-2">
             <div className=" p-2 flex flex-col gap-2">
               <div className="border-b pb-4 px-2 flex justify-between">
                 <div>
@@ -52,7 +51,7 @@ const Home = () => {
         </div>
         <SectionWrapper className="p-6 xl:p-4">
           <SectionTopBar />
-          <div className="max-h-96 overflow-y-scroll">
+          <div className="overflow-y-scroll">
             <StocksTable />
           </div>
         </SectionWrapper>
