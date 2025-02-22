@@ -5,7 +5,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        "light-gray": "#F6F7F9",
+        "dark-foreground": "#151515",
+        "light-footer-background": "#0D0C2B",
       },
     },
   },

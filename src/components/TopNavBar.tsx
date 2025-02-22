@@ -2,10 +2,11 @@ import { Mail, Bell } from "react-feather";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import { hideDrawer, showDrawer } from "@/features/drawerSlice";
+import ThemeToggle from "./ThemeToggle";
 
 function StockSearch() {
   return (
-    <div className="relative bg-slate-50 w-full ">
+    <div className="relative bg-slate-50 dark:bg-black w-full ">
       <div className="absolute inset-y-0 right-2 flex items-center pl-3 pointer-events-none">
         {/* <svg
             aria-hidden="true"
@@ -26,7 +27,7 @@ function StockSearch() {
       <input
         type="search"
         placeholder="Search"
-        className="bg-transparent px-4 py-1 block w-full text-sm text-gray-900 bg-gray-50 rounded border border-gray-300 focus:ring-emerald-500/50 focus:border-emerald-500/50 outline-none"
+        className="bg-transparent px-4 py-1 block w-full text-sm text-gray-900 bg-gray-50 rounded border border-gray-300 dark:border-gray-800 focus:ring-emerald-500/50 focus:border-emerald-500/50 outline-none"
       />
     </div>
   );
@@ -68,12 +69,13 @@ function MenuButton() {
 
 function TopNavbar() {
   return (
-    <div className="bg-white px-6 py-6 flex justify-between sticky top-0 z-10">
+    <div className="bg-white dark:bg-dark-foreground px-6 py-6 flex justify-between sticky top-0 z-10">
       <div>
         <MenuButton />
         <StockSearch />
       </div>
       <div className="flex items-center gap-2 text-gray-700 ">
+        <ThemeToggle />
         <Mail strokeWidth={2} width={20} />
         <Bell strokeWidth={2} width={20} />
       </div>

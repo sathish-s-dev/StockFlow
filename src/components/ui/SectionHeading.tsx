@@ -6,7 +6,7 @@ type SectionHeadingProps = {
 };
 
 const SectionHeading = ({ title, className }: SectionHeadingProps) => {
-  return <h1 className={cn("text-lg font-semibold", className)}>{title}</h1>;
+  return <h1 className={cn("text-lg font-semibold text-slate-800 dark:text-white", className)}>{title}</h1>;
 };
 
 export default SectionHeading;

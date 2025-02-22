@@ -13,9 +13,13 @@ import { useState } from "react";
 import { Bookmark } from "react-feather";
 import { Link } from "react-router";
 
+import { stocksArray } from "../../../data/stocks";
+
 export default function StocksTable() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-  
+
+  console.log(stocksArray);
+
   return (
     <Table>
       <TableCaption>A list of your recent invoices.</TableCaption>
@@ -33,21 +37,21 @@ export default function StocksTable() {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {stocks.slice(0,5).map((stock) => (
-          <TableRow key={stock.exchangeShortName}>
+        {stocksArray.map((stock) => (
+          <TableRow key={stock.meta.symbol}>
             <TableCell className="font-medium">
               <Link
-                to={`/stock/${stock.exchangeShortName}`}
+                to={`/stock/${stock.meta.symbol}`}
                 className="flex items-center gap-2"
               >
                 <img
                   src="https://images.financialmodelingprep.com/symbol/AAL.png"
                   className="w-10"
                 />
-                {stock.name}
+                {stock.meta.symbol}
               </Link>
             </TableCell>
-            <TableCell>{stock.price}</TableCell>
+            <TableCell>400,01</TableCell>
             {!isMobile && (
               <>
                 <TableCell className="">201,01</TableCell>

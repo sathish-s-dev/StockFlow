@@ -9,7 +9,12 @@ const SectionWrapper = ({
   className?: string;
 }) => {
   return (
-    <div className={cn("w-full rounded-md bg-white xl:p-4 p-2", className)}>
+    <div
+      className={cn(
+        "w-full rounded-md bg-white dark:bg-dark-foreground xl:p-4 p-2",
+        className
+      )}
+    >
       {children}
     </div>
   );

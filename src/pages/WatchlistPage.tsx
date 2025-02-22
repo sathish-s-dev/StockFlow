@@ -11,4 +11,4 @@ const StockDetails = () => {
   );
 };
 
-export default StockDetails;
+export default StockDetails; 

@@ -2,7 +2,7 @@ import SocialLinks from "./SocialLinks";
 
 const Footer = () => {
   return (
-    <footer className="bg-slate-800 text-white py-4">
+    <footer className="bg-light-footer-background dark:bg-dark-foreground text-white py-4">
       <div className="xl:ml-64 space-y-8 px-4 py-4 sm:px-6 lg:space-y-8 lg:px-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div>

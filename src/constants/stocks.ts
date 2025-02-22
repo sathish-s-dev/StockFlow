@@ -1,4 +1,4 @@
-export const stocks =[
+export const stocks = [
   {
       "symbol": "AMS.JO",
       "name": "Anglo American Platinum Limited",
@@ -238,5 +238,5 @@ export const stocks =[
       "exchange": "Stockholm Stock Exchange",
       "exchangeShortName": "STO",
       "type": "stock"
-  },
+  }
 ]

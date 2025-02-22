@@ -5,6 +5,7 @@ import { addToWatchlist } from "@/features/watchlistSlice";
 import router from "@/router";
 import { RootState } from "@/store/store";
 import { ChevronLeft, Plus } from "react-feather";
+import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 
 const StockDetails = () => {
@@ -36,6 +37,7 @@ const StockDetails = () => {
               onClick={() => {
                 const details = dispatch(addToWatchlist("AAPL"));
                 console.log(details);
+                toast.success("Stock added to watchlist");
               }}
               className="flex gap-1 items-center px-4 py-1 border bg-white text-slate-600 rounded-md text-sm"
             >

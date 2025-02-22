@@ -15,8 +15,8 @@ function StockHistorySelection() {
           className={cn(
             "text-xs border py-1 px-3 rounded-full transition-all",
             selected === duration
-              ? "bg-slate-800 text-white"
-              : "bg-white text-black"
+              ? "bg-slate-800 dark:bg-slate-200 text-white dark:text-slate-800"
+              : "bg-white dark:bg-dark-foreground text-black dark:text-white"
           )}
         >
           {duration}
@@ -26,5 +26,4 @@ function StockHistorySelection() {
   );
 }
 
-
-export default StockHistorySelection
+export default StockHistorySelection;
