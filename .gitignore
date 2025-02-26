@@ -27,5 +27,8 @@ pnpm-lock.yaml
 *.sln
 *.sw?
 
+# Environment files
+.env-*
+.env
 
 data/

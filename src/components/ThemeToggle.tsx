@@ -1,10 +1,53 @@
-import { useEffect, useState } from "react";
+import { setTheme } from "@/features/themeSlice";
+import { RootState } from "@/store/store";
+import { useEffect } from "react";
 import { Moon, Sun } from "react-feather";
+import { useDispatch, useSelector } from "react-redux";
 
+// function ThemeToggle() {
+//   // const [theme, setTheme] = useState(() => {
+//   //   return localStorage.getItem("theme") || "light";
+//   // });
+
+//   const theme = useSelector((state: RootState) => state.theme);
+//   const dispatch = useDispatch();
+
+//   useEffect(() => {
+//     if (theme === "dark") {
+//       document.documentElement.classList.add("dark");
+//     } else {
+//       document.documentElement.classList.remove("dark");
+//     }
+//     dispatch(setTheme(theme));
+//     localStorage.setItem("theme", theme);
+//   }, [theme, dispatch]);
+
+//   return (
+//     <div className="flex items-center">
+//       <label className="ui-switch">
+//         <input
+//           type="checkbox"
+//           id="theme-toggle"
+//           className="sr-only"
+//           checked={theme === "dark"}
+//           onChange={() =>
+//             dispatch(setTheme(theme === "dark" ? "light" : "dark"))
+//           }
+//         />
+//         <div className="slider">
+//           <div className="circle"></div>
+//         </div>
+//       </label>
+//     </div>
+//   );
+// }
 function ThemeToggle() {
-  const [theme, setTheme] = useState(() => {
-    return localStorage.getItem("theme") || "light";
-  });
+  // const [theme, setTheme] = useState(() => {
+  //   return localStorage.getItem("theme") || "light";
+  // });
+
+  const theme = useSelector((state: RootState) => state.theme);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (theme === "dark") {
@@ -12,8 +55,9 @@ function ThemeToggle() {
     } else {
       document.documentElement.classList.remove("dark");
     }
+    dispatch(setTheme(theme));
     localStorage.setItem("theme", theme);
-  }, [theme]);
+  }, [theme, dispatch]);
 
   return (
     <div className="flex items-center">
@@ -22,7 +66,7 @@ function ThemeToggle() {
         id="theme-toggle"
         className="sr-only"
         checked={theme === "dark"}
-        onChange={() => setTheme(theme === "dark" ? "light" : "dark")}
+        onChange={() => dispatch(setTheme(theme === "dark" ? "light" : "dark"))}
       />
       <label
         htmlFor="theme-toggle"

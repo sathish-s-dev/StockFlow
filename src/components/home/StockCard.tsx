@@ -1,26 +1,46 @@
-const StockCard = () => {
+import { cn } from "@/lib/utils/cn";
+import { Stock } from "@/types";
+import { Link } from "react-router";
+
+const StockCard = ({ stock }: { stock: Stock }) => {
+  console.log(stock);
+
+  const changePercentage = +stock.change_percent;
   return (
-    <div className="py-3 px-3 border-b flex justify-between">
+    <Link
+      to={`/stock/${stock.symbol}`}
+      className="py-3 px-3 border-b flex justify-between"
+    >
       <div>
         <div className="flex gap-2 items-center">
           <div>
             <img
-              src="https://images.financialmodelingprep.com/symbol/AAPL.png"
+              src={stock.logo}
               className="w-9 invert dark:invert-0"
-              alt=""
+              alt={stock.company}
             />
           </div>
           <div>
-            <h3 className=" text-slate-800 dark:text-white">Adobe</h3>
-            <p className="text-sm text-slate-500">Adobe</p>
+            <h3 className=" text-slate-800 dark:text-white">{stock.company}</h3>
+            <p className="text-sm text-slate-500">{stock.symbol}</p>
           </div>
         </div>
       </div>
       <div className="flex flex-col justify-between">
-        <p className="font-semibold dark:text-white"> &#x24; 201,01</p>
-        <p className="text-red-500">- 201,01</p>
+        <p className="font-semibold dark:text-white">
+          {" "}
+          &#8377; {stock.current_price}
+        </p>
+        <p
+          className={cn("text-sm text-slate-700 dark:text-slate-100")}
+          style={{
+            color: changePercentage > 0 ? "#22c55e" : "#ef4444 ",
+          }}
+        >
+          {changePercentage < 0 ? changePercentage : `+${changePercentage}`}%
+        </p>
       </div>
-    </div>
+    </Link>
   );
 };
 

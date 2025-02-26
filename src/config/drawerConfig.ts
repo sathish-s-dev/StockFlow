@@ -6,20 +6,9 @@ export const drawerConfig = {
       items: [
         { name: "Dashboard", path: "/" },
         { name: "Watchlist", path: "/watchlist" },
-        { name: "Migrations", path: "/" },
-        { name: "Appearance", path: "/" },
+        { name: "Wallet", path: "/" },
+        { name: "News Feed", path: "/" },
         { name: "Mamba UI", path: "/" },
-      ],
-    },
-    {
-      title: "Dashboard",
-      items: [
-        { name: "Header", path: "/" },
-        { name: "Drawer", path: "/" },
-        { name: "Page Title", path: "/" },
-        { name: "Menus", path: "/" },
-        { name: "Sidebar", path: "/" },
-        { name: "Footer", path: "/" },
       ],
     },
   ],
