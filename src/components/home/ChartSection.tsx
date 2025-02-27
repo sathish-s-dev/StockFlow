@@ -1,20 +1,12 @@
 import { useGetCandlestickDataQuery } from "@/services/mockApi";
-import { Stock } from "@/types";
-import dayjs from "dayjs";
+import type { Stock } from "@/types";
 import { useState } from "react";
-import {
-  ResponsiveContainer,
-  AreaChart,
-  Area,
-  CartesianGrid,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
 import SectionHeading from "../ui/SectionHeading";
 import SectionWrapper from "../ui/SectionWrapper";
 import StockHistorySelection from "./StockHistorySelection";
 import { filterData } from "@/lib/utils/filterData";
+import { ComposedRechart } from "@/components/ui/ComposedRechart";
+import formatCandlestickData from "@/lib/utils/formatCandlestickData";
 
 function ChartSection({ stock }: { stock: Stock }) {
   const [chartDuration, setChartDuration] = useState({
@@ -27,14 +19,7 @@ function ChartSection({ stock }: { stock: Stock }) {
     useGetCandlestickDataQuery();
 
   console.log(candlestick, isCandleLoading, "candlestick");
-  const closeData = candlestick?.map((item) => {
-    return {
-      close: item.close,
-      date: dayjs(item.date).format("MM-DD"),
-      low: item.low,
-      high: item.high,
-    };
-  });
+  const closeData = candlestick?.map(formatCandlestickData);
 
   const dataValue = filterData(closeData, chartDuration.value);
 
@@ -84,51 +69,8 @@ function ChartSection({ stock }: { stock: Stock }) {
         chartDuration={chartDuration}
         setChartDuration={setChartDuration}
       /> */}
-      <ResponsiveContainer width={"100%"} height={250}>
-        <AreaChart
-          data={dataValue}
-          margin={{
-            top: 10,
-            right: 30,
-            left: 0,
-            bottom: 0,
-          }}
-        >
-          <Area
-            type="monotone"
-            label={"close"}
-            dataKey="close"
-            stackId="1"
-            max={400}
-            stdDeviation={25}
-            baseLine={50}
-            stroke="#00ff00"
-            fill="#00ff0050"
-            dot={true}
-          />
 
-          {/* <Area
-            type="monotone"
-            dataKey="high"
-            stackId="1"
-            stroke="#82ca9d"
-            fill="#82ca9d"
-          />
-         
-          <Area
-            type="monotone"
-            dataKey="low"
-            stackId="1"
-            stroke="#8884d8"
-            fill="#8884d8"
-          /> */}
-
-          <CartesianGrid strokeDasharray="2 2" />
-          <Tooltip />
-          <XAxis dataKey={"date"} />
-          <YAxis dataKey={"close"} />
-        </AreaChart>
-      </ResponsiveContainer>
+      <ComposedRechart />
       {/* <ResponsiveContainer width={"100%"} height={250}>
         <LineChart data={dataValue}>
           <Line

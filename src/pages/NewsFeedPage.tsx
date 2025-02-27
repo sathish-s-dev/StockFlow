@@ -1,7 +1,7 @@
 import FeedCard from "@/components/news-feed/FeedCard";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { newsFeedata } from "@/constants/news-feed";
-import { BackButton } from "./StockDetailsPage";
+import { BackButton } from "@/components/BackButton";
 
 const NewsFeedPage = () => {
   return (

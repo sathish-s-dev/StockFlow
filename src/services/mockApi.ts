@@ -1,5 +1,5 @@
 // Need to use the React-specific entry point to import createApi
-import { CandlestickData, Stock } from "@/types";
+import type { CandlestickData, Stock } from "@/types";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 // import type { Pokemon } from "./types";
 

@@ -1,9 +1,8 @@
+import { CandlestickData } from "@/types";
 import dayjs from "dayjs";
 
 export const filterData = (
-  closeData:
-    | { close: string; date: string; high: string; low: string }[]
-    | undefined,
+  closeData: CandlestickData[] | undefined,
   days: number
 ) => {
   if (!closeData) return [];

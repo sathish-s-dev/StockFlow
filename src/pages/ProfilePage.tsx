@@ -1,13 +1,3 @@
-const ProfilePage = () => {
-  return (
-    <div>
-      <StockChart />
-    </div>
-  );
-};
-
-export default ProfilePage;
-
 import { useState } from "react";
 import {
   LineChart,
@@ -18,6 +8,19 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import dayjs from "dayjs";
+import { ComposedRechart } from "@/components/ui/ComposedRechart";
+
+const ProfilePage = () => {
+  return (
+    <div>
+      <ComposedRechart />
+    </div>
+  );
+};
+
+export default ProfilePage;
+
+
 
 // Sample Candlestick Data
 const candlestick = [
@@ -66,7 +69,7 @@ const filterData = (days: number) => {
   });
 };
 
-const StockChart = () => {
+export const StockChart = () => {
   const [filteredData, setFilteredData] = useState(filterData(7)); // Default: 1 Week
 
   const handleFilterChange = (days: number) => {
@@ -118,3 +121,4 @@ const StockChart = () => {
     </div>
   );
 };
+

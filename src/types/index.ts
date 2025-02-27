@@ -40,7 +40,7 @@ export interface SingleStockQuote {
   timestamp: number;
 }
 
-export type Stock = {
+export interface Stock {
   symbol: string;
   company: string;
   sector: string;
@@ -63,16 +63,18 @@ export type Stock = {
     "dividend amount": string;
     "split coefficient": string;
   }[];
-};
+}
 
-export type CandlestickData = {
+export interface CandlestickData {
   date: string;
   open: string;
   high: string;
   low: string;
   close: string;
-  "adjusted close": string;
   volume: string;
-  "dividend amount": string;
-  "split coefficient": string;
-};
+}
+
+export interface Duration {
+  key: string;
+  value: number;
+}

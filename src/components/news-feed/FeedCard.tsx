@@ -1,4 +1,4 @@
-import { NewsArticle } from "@/types";
+import type { NewsArticle } from "@/types";
 import { Link } from "react-router";
 
 interface NewsFeedProps {

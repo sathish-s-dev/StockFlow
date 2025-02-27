@@ -1,6 +1,6 @@
 import { Mail, Bell } from "react-feather";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/store/store";
+import type { RootState } from "@/store/store";
 import { hideDrawer, showDrawer } from "@/features/drawerSlice";
 import ThemeToggle from "./ThemeToggle";
 import Autocomplete from "./ui/AutoComplete";

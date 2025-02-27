@@ -1,19 +1,16 @@
 import PaginatedTable from "@/components/home/PaginatedTable";
 import SectionTopBar from "@/components/home/SectionTopBar";
 import StockCard from "@/components/home/StockCard";
-import SectionHeading from "@/components/ui/SectionHeading";
 import SectionWrapper from "@/components/ui/SectionWrapper";
-import { RootState } from "@/store/store";
+import type { RootState } from "@/store/store";
 import { useSelector } from "react-redux";
-import { Carousel } from "./Carousal";
-// import { fetchStockData } from "@/constants/stockQoute";
-// import { stocks1 } from "@/constants/stocks";
 import {
   useGetCandlestickDataQuery,
   useGetStocksListQuery,
 } from "@/services/mockApi";
 
 import ChartSection from "@/components/home/ChartSection";
+import { PortfolioCarousalSection } from "@/components/home/PortfolioCarousalSection";
 
 // todo
 // my portfolio card i have to change
@@ -83,11 +80,3 @@ const Home = () => {
 export default Home;
 
 
-function PortfolioCarousalSection() {
-  return (
-    <div className="px-4">
-      <SectionHeading title="My Porfolio" />
-      <Carousel />
-    </div>
-  );
-}

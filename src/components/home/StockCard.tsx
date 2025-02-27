@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils/cn";
-import { Stock } from "@/types";
+import type { Stock } from "@/types";
 import { Link } from "react-router";
 
 const StockCard = ({ stock }: { stock: Stock }) => {

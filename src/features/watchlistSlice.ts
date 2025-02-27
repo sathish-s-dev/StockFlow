@@ -1,4 +1,4 @@
-import { SingleStockQuote, Stock } from "@/types";
+import type { SingleStockQuote, Stock } from "@/types";
 import { createSlice } from "@reduxjs/toolkit";
 import toast from "react-hot-toast";
 

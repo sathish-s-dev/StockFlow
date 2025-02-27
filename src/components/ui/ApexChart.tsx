@@ -1,24 +1,31 @@
-import { useEffect, useMemo } from "react";
+// import { monthStocks } from "@/constants/monthStocks";
+import { filterData } from "@/lib/utils/filterData";
+import formatCandlestickData from "@/lib/utils/formatCandlestickData";
+import { useGetCandlestickDataQuery } from "@/services/mockApi";
+import type { RootState } from "@/store/store";
+import type { CandlestickData, Duration } from "@/types";
+import { ApexOptions } from "apexcharts";
+import { Dispatch, SetStateAction, useEffect, useMemo, useState } from "react";
 import ReactApexChart from "react-apexcharts";
 import { useSelector } from "react-redux";
-import { RootState } from "@/store/store";
-import { getFilteredCandlestickData } from "@/lib/utils/getFilteredCandlestickData";
-import { Dispatch, SetStateAction } from "react";
-import { useGetStockHistoryQuery } from "@/services/alphaVantageApi";
-import { useGetStockQuoteQuery } from "@/services/stocksApi";
-import { ApexOptions } from "apexcharts";
-import { monthStocks } from "@/constants/monthStocks";
 
-const ApexChart = ({
-  chartDuration,
-  symbol = "AAPL",
-  setChartDuration,
-}: {
-  chartDuration: string;
+interface ApexChartProps {
+  chartDuration: Duration;
   symbol: string;
-  setChartDuration: Dispatch<SetStateAction<string>>;
-}) => {
+  setChartDuration: Dispatch<SetStateAction<Duration>>;
+}
+
+const ApexChart = ({ chartDuration }: ApexChartProps) => {
   const theme = useSelector((state: RootState) => state.theme);
+  const { data: candlestick } = useGetCandlestickDataQuery();
+
+  const data = useMemo(() => {
+    return candlestick?.map(formatCandlestickData) || [];
+  }, [candlestick]);
+
+  // const [filteredData, setFilteredData] = useState(
+  //   filterData(data, chartDuration.value)
+  // );
 
   // // Fetch stock history data
   // const {
@@ -41,28 +48,37 @@ const ApexChart = ({
 
   // console.log(stockQuote, isQuoteLoading, stockHistoryData, isLoading);
 
-  const isLoading = false;
+  // const isLoading = false;
   // const isQuoteLoading = false;
-  const stockHistoryData = monthStocks;
+  // const stockHistoryData = monthStocks;
 
-  // Memoize chart data to avoid unnecessary renders
+  const [filteredData, setFilteredData] = useState<CandlestickData[]>([]);
+
+  // Update filtered data whenever chartDuration changes
+  useEffect(() => {
+    const filtered = filterData(data, chartDuration.value);
+    setFilteredData(filtered);
+  }, [data, chartDuration, setFilteredData]);
+
+  console.log(filteredData, "filtered data from stock details");
+
+  // Memoize chart data
   const chartData = useMemo(() => {
-    if (!stockHistoryData || isLoading)
+    if (!filteredData.length) {
       return { series: [{ name: "Stock Prices", data: [] }] };
-
-    const charts = getFilteredCandlestickData(stockHistoryData, chartDuration);
+    }
     return {
       series: [
         {
           name: "Stock Prices",
-          data: charts.map((item) => ({
-            x: new Date(item.date),
+          data: filteredData.map((item) => ({
+            x: item.date, // Ensure date is a valid timestamp
             y: [item.open, item.high, item.low, item.close],
           })),
         },
       ],
     };
-  }, [stockHistoryData, chartDuration, isLoading]);
+  }, [filteredData]);
 
   // Memoize ApexCharts options for performance optimization
   const options: ApexOptions = useMemo(() => {

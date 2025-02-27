@@ -1,5 +1,5 @@
 import { setTheme } from "@/features/themeSlice";
-import { RootState } from "@/store/store";
+import type { RootState } from "@/store/store";
 import { useEffect } from "react";
 import { Moon, Sun } from "react-feather";
 import { useDispatch, useSelector } from "react-redux";

@@ -4,14 +4,15 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import { addToWatchlist } from "@/features/watchlistSlice";
 import { cn } from "@/lib/utils/cn";
-import router from "@/router";
-import { RootState } from "@/store/store";
+import type { RootState } from "@/store/store";
 import { useState } from "react";
-import { ChevronLeft, Plus } from "react-feather";
+import { Plus } from "react-feather";
 // import toast from "react-hot-toast";
 import { useGetStockQuoteQuery } from "@/services/mockApi";
+import type { Duration } from "@/types";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
+import { BackButton } from "@/components/BackButton";
 
 const StockDetails = () => {
   const dispatch = useDispatch();
@@ -19,7 +20,10 @@ const StockDetails = () => {
     (state: RootState) => state.watchlist.watchlistState
   );
 
-  const [chartDuration, setChartDuration] = useState("1 year");
+  const [chartDuration, setChartDuration] = useState<Duration>({
+    key: "1 month",
+    value: 30,
+  });
 
   console.log(watchlist);
 
@@ -84,10 +88,8 @@ const StockDetails = () => {
             <p></p>
           </div>
           <div className="flex flex-col gap-2 text-slate-900 dark:text-slate-100">
-            <p className="text-sm">Price Range</p>
-            <p className="text-xl">
-              {/* &#36; {priceRange[0]} - &#36;{priceRange[1]} */}
-            </p>
+            <p className="text-sm">Volueme</p>
+            <p className="text-xl">{data[0].volume}</p>
           </div>
           <div className="flex flex-col gap-2 text-slate-900 dark:text-slate-100">
             <p className="text-sm">Fully Dilutted Market Cap</p>
@@ -116,33 +118,3 @@ const StockDetails = () => {
 };
 
 export default StockDetails;
-
-export function BackButton() {
-  return (
-    <IconButton handleClick={() => router.navigate(-1)}>
-      <ChevronLeft />
-    </IconButton>
-  );
-}
-
-export function IconButton({
-  handleClick,
-  className,
-  children,
-}: {
-  handleClick: () => void;
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <button
-      onClick={handleClick}
-      className={cn(
-        "flex items-center rounded-full justify-center size-9 flex-shrink-0 bg-white shadow-xl",
-        className
-      )}
-    >
-      {children}
-    </button>
-  );
-}

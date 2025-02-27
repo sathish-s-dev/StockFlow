@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils/cn";
 import { useLayoutEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { hideDrawer, showDrawer } from "@/features/drawerSlice";
-import { RootState } from "@/store/store";
+import type { RootState } from "@/store/store";
 import { X } from "react-feather";
 import { Link } from "react-router";
 import { drawerConfig } from "@/config/drawerConfig";

@@ -1,10 +1,12 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const themeSlice = createSlice({
   name: "theme",
-  initialState: localStorage.getItem("theme") || "light",
+  initialState: "light",
   reducers: {
-    setTheme: (state, action) => (state = action.payload),
+    setTheme: (_, action: PayloadAction<string>) => {
+      return action.payload; // Return new state explicitly
+    },
   },
 });
 

@@ -1,6 +1,7 @@
 import stockSymbols from "@/constants/stockSymbols";
 import router from "@/router";
-import { Stock } from "@/types";
+import type { Stock } from "@/types";
+
 
 // import { AutoSizer, List, ListRowProps } from "react-virtualized";
 

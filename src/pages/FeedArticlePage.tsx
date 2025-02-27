@@ -2,7 +2,7 @@ import { newsFeedata } from "@/constants/news-feed";
 import { useParams } from "react-router";
 import { Helmet } from "react-helmet";
 import dayjs from "dayjs";
-import { BackButton } from "./StockDetailsPage";
+import { BackButton } from "@/components/BackButton";
 import { cn } from "@/lib/utils/cn";
 import SectionHeading from "@/components/ui/SectionHeading";
 

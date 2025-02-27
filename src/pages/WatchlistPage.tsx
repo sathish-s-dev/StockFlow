@@ -1,10 +1,10 @@
 // import StocksTable from "@/components/home/StockTable";
 import SectionHeading from "@/components/ui/SectionHeading";
 import SectionWrapper from "@/components/ui/SectionWrapper";
-import { BackButton } from "./StockDetailsPage";
+import { BackButton } from "@/components/BackButton";
 // import PaginatedTable from "@/components/home/VirtualizedStockList"; "@/components/home/VirtualizedStockList";
 import router from "@/router";
-import { RootState } from "@/store/store";
+import type { RootState } from "@/store/store";
 import { useSelector } from "react-redux";
 
 const WatchlistPage = () => {
