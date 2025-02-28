@@ -1,4 +1,5 @@
 {
+  "watchlist": [],
   "stocks": [
     {
       "id": 1,
@@ -377,6 +378,88 @@
       "volume": "2.4M",
       "pe_ratio": 25.4,
       "dividend_yield": 0.9
+    }
+  ],
+  "news": [
+    {
+      "id": 1,
+      "title": "AI Breakthrough: GPT-5 Launches with Advanced Features",
+      "description": "OpenAI has introduced GPT-5, bringing enhanced reasoning, contextual understanding, and AI safety.",
+      "image": "https://source.unsplash.com/600x400/?technology,ai",
+      "category": "Technology",
+      "timestamp": "2025-02-27T08:00:00Z"
+    },
+    {
+      "id": 2,
+      "title": "Stock Market Reaches All-Time High",
+      "description": "The stock market is soaring, driven by strong earnings from leading tech companies.",
+      "image": "https://source.unsplash.com/600x400/?business,stock",
+      "category": "Business",
+      "timestamp": "2025-02-27T10:30:00Z"
+    },
+    {
+      "id": 3,
+      "title": "Champions League Quarterfinals: Exciting Matchups",
+      "description": "Top European clubs will face off in the highly anticipated quarterfinals.",
+      "image": "https://source.unsplash.com/600x400/?sports,football",
+      "category": "Sports",
+      "timestamp": "2025-02-27T14:15:00Z"
+    },
+    {
+      "id": 4,
+      "title": "Oscars 2025: Hollywood’s Biggest Night",
+      "description": "The Academy Awards are set to take place, with top films competing for major awards.",
+      "image": "https://source.unsplash.com/600x400/?movies,oscars",
+      "category": "Entertainment",
+      "timestamp": "2025-02-27T16:00:00Z"
+    },
+    {
+      "id": 5,
+      "title": "New Health Study Reveals Benefits of Plant-Based Diet",
+      "description": "A new study suggests plant-based diets can significantly improve heart health and longevity.",
+      "image": "https://source.unsplash.com/600x400/?health,food",
+      "category": "Health",
+      "timestamp": "2025-02-27T18:45:00Z"
+    },
+    {
+      "id": 6,
+      "title": "Apple Unveils Vision Pro 2: What’s New?",
+      "description": "Apple has announced the Vision Pro 2 with an improved display, longer battery life, and new AR features.",
+      "image": "https://source.unsplash.com/600x400/?apple,technology",
+      "category": "Technology",
+      "timestamp": "2025-02-28T09:20:00Z"
+    },
+    {
+      "id": 7,
+      "title": "Bitcoin Surpasses $70,000: What’s Driving the Surge?",
+      "description": "Bitcoin has reached an all-time high due to growing institutional investment and ETF approvals.",
+      "image": "https://source.unsplash.com/600x400/?crypto,bitcoin",
+      "category": "Business",
+      "timestamp": "2025-02-28T11:00:00Z"
+    },
+    {
+      "id": 8,
+      "title": "Olympics 2025: Host City Ready for Grand Opening",
+      "description": "Final preparations are underway for the grand opening ceremony of the 2025 Olympics.",
+      "image": "https://source.unsplash.com/600x400/?olympics,sports",
+      "category": "Sports",
+      "timestamp": "2025-02-28T13:45:00Z"
+    },
+    {
+      "id": 9,
+      "title": "Netflix Unveils New Sci-Fi Series",
+      "description": "Netflix is set to release a mind-bending sci-fi thriller with stunning visuals and a gripping plot.",
+      "image": "https://source.unsplash.com/600x400/?netflix,series",
+      "category": "Entertainment",
+      "timestamp": "2025-02-28T15:30:00Z"
+    },
+    {
+      "id": 10,
+      "title": "WHO Warns About New Virus Variant",
+      "description": "The World Health Organization has issued a global warning about a newly discovered virus variant.",
+      "image": "https://source.unsplash.com/600x400/?health,virus",
+      "category": "Health",
+      "timestamp": "2025-02-28T17:15:00Z"
     }
   ],
   "candlestick": [

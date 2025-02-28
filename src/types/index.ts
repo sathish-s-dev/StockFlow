@@ -78,3 +78,8 @@ export interface Duration {
   key: string;
   value: number;
 }
+
+export interface AreaChartData {
+  date: string;
+  value: number;
+}

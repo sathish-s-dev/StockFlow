@@ -7,7 +7,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const mockApi = createApi({
   reducerPath: "mockApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:5000/",
+    baseUrl: import.meta.env.VITE_PUBLIC_MOCK_API_BASE_URL,
   }),
   endpoints: (builder) => ({
     getStocksList: builder.query<Stock[], void>({

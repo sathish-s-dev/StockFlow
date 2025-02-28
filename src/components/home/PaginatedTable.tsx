@@ -42,7 +42,7 @@ const PaginatedTable = ({ stocks }: TableProps) => {
   console.log("stocks list", stockList);
 
   return (
-    <div className="border-base-content/25 w-full overflow-x-auto border">
+    <div className="border-base-content/25 w-full overflow-x-auto">
       <div className="p-2 w-full sm:p-4 dark:text-gray-800">
         <div className="overflow-x-auto min-h-[400px] flex flex-col justify-between">
           <table className="min-w-full text-xs md:text-sm">

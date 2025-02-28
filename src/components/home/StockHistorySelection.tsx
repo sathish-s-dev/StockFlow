@@ -17,21 +17,21 @@ function StockHistorySelection({
   >;
 }) {
   const durations = [
-    { key: "1 day", value: 1 },
-    { key: "1 week", value: 7 },
-    { key: "1 month", value: 30 },
-    { key: "3 months", value: 90 },
-    { key: "6 months", value: 180 },
+    { key: "1D", value: 1 },
+    { key: "1W", value: 7 },
+    { key: "1M", value: 30 },
+    { key: "3M", value: 90 },
+    { key: "6M", value: 180 },
   ];
 
   return (
-    <div className="flex gap-2 py-2 flex-wrap">
+    <div className="flex flex-wrap border w-fit rounded-md overflow-clip">
       {durations.map((duration) => (
         <button
           key={duration.key}
           onClick={() => setChartDuration(duration)}
           className={cn(
-            "text-xs border py-1 px-3 rounded-full transition-all",
+            "text-xs py-1 px-3 transition-all",
             chartDuration.key === duration.key
               ? "bg-slate-800 dark:bg-slate-200 text-white dark:text-slate-800"
               : "bg-white dark:bg-dark-foreground text-black dark:text-white"

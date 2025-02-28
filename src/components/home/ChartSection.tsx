@@ -1,16 +1,31 @@
 import { useGetCandlestickDataQuery } from "@/services/mockApi";
-import type { Stock } from "@/types";
+import type { AreaChartData, Stock } from "@/types";
 import { useState } from "react";
 import SectionHeading from "../ui/SectionHeading";
 import SectionWrapper from "../ui/SectionWrapper";
 import StockHistorySelection from "./StockHistorySelection";
 import { filterData } from "@/lib/utils/filterData";
-import { ComposedRechart } from "@/components/ui/ComposedRechart";
 import formatCandlestickData from "@/lib/utils/formatCandlestickData";
+import HomeChart, { SmallChart } from "../ui/HomeChart";
+
+const data: AreaChartData[] = [
+  {
+    date: "Page A",
+    value: 100,
+  },
+  {
+    date: "Page B",
+    value: 45,
+  },
+  {
+    date: "Page C",
+    value: 25,
+  },
+];
 
 function ChartSection({ stock }: { stock: Stock }) {
   const [chartDuration, setChartDuration] = useState({
-    key: "1 month",
+    key: "1M",
     value: 30,
   });
   // const [symbol] = useState("AAPL");
@@ -70,7 +85,10 @@ function ChartSection({ stock }: { stock: Stock }) {
         setChartDuration={setChartDuration}
       /> */}
 
-      <ComposedRechart />
+      {/* <ComposedRechart /> */}
+      <HomeChart duration={chartDuration.value} />
+      <SmallChart chartData={data} dataKey="value" />
+
       {/* <ResponsiveContainer width={"100%"} height={250}>
         <LineChart data={dataValue}>
           <Line
