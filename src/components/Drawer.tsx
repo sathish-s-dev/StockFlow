@@ -8,9 +8,7 @@ import { Link } from "react-router";
 import { drawerConfig } from "@/config/drawerConfig";
 
 const Drawer = () => {
-  const drawerState = useSelector(
-    (state: RootState) => state.drawer.drawerState
-  );
+  const drawer = useSelector((state: RootState) => state.drawer.drawer);
 
   const dispatch = useDispatch();
 
@@ -32,7 +30,7 @@ const Drawer = () => {
     <div
       className={cn(
         "fixed xl:sticky w-full top-0 left-0 z-40 max-w-[256px] h-screen p-4 overflow-y-auto transition-transform bg-white dark:bg-dark-foreground",
-        drawerState ? "translate-x-0" : "-translate-x-full"
+        drawer ? "translate-x-0" : "-translate-x-full"
       )}
       tabIndex={-1}
       aria-labelledby="drawer-label"

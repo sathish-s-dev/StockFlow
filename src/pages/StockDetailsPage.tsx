@@ -8,7 +8,7 @@ import type { RootState } from "@/store/store";
 import { useState } from "react";
 import { Plus } from "react-feather";
 // import toast from "react-hot-toast";
-import { useGetStockQuoteQuery } from "@/services/mockApi";
+import { useGetStockQuoteQuery } from "@/services/mockStockApi";
 import type { Duration } from "@/types";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";

@@ -8,19 +8,19 @@ import themeReducer from "@/features/themeSlice";
 import storage from "redux-persist/lib/storage"; // LocalStorage
 import { persistReducer, persistStore } from "redux-persist";
 import { alphaVantageApi } from "@/services/alphaVantageApi";
-import { mockApi } from "@/services/mockApi";
+import { mockStockApi } from "@/services/mockStockApi";
 
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["watchlist", "theme"], //Persist watchlist and theme
+  whitelist: ["watchlist", "theme", "drawer"], //Persist watchlist and theme
   // whitelist: ["stocksApi", "aplhaVantageApi"],  // Persist stock API data and alphaVantageApi
 };
 
 const rootReducer = combineReducers({
   [stocksApi.reducerPath]: stocksApi.reducer,
   [alphaVantageApi.reducerPath]: alphaVantageApi.reducer,
-  [mockApi.reducerPath]: mockApi.reducer,
+  [mockStockApi.reducerPath]: mockStockApi.reducer,
   drawer: drawerReducer,
   watchlist: WatchListReducer,
   theme: themeReducer,
@@ -35,7 +35,7 @@ export const store = configureStore({
     getDefaultMiddleware()
       .concat(stocksApi.middleware)
       .concat(alphaVantageApi.middleware)
-      .concat(mockApi.middleware),
+      .concat(mockStockApi.middleware),
 });
 
 // Adding setup listeners for rtk query

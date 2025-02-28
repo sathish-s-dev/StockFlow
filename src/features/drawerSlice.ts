@@ -1,20 +1,31 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
+
+interface drawer {
+  drawer: boolean;
+}
+// Initial state
+const initialState: drawer = {
+  drawer: false,
+};
+
 export const drawerSlice = createSlice({
   name: "drawer",
-  initialState: {
-    drawerState: false,
-  },
+  initialState,
   reducers: {
     showDrawer: (state) => {
-      state.drawerState = true;
+      state.drawer = true;
     },
     hideDrawer: (state) => {
-      state.drawerState = false;
+      state.drawer = false;
     },
   },
 });
 
-export const { showDrawer, hideDrawer } = drawerSlice.actions;
-
 export default drawerSlice.reducer;
+
+// Define the type for your state
+
+// Export actions
+export const { showDrawer, hideDrawer } = drawerSlice.actions;

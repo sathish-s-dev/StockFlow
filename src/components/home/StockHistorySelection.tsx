@@ -33,7 +33,7 @@ function StockHistorySelection({
           className={cn(
             "text-xs py-1 px-3 transition-all",
             chartDuration.key === duration.key
-              ? "bg-slate-800 dark:bg-slate-200 text-white dark:text-slate-800"
+              ? "bg-orange-400/80 dark:bg-slate-200 text-white dark:text-slate-800"
               : "bg-white dark:bg-dark-foreground text-black dark:text-white"
           )}
         >

@@ -1,14 +1,13 @@
-import type { RootState } from "@/store/store";
-import { useSelector } from "react-redux";
+import { Carousel } from "@/components/ui/Carousal";
+import { useGetWatchlistQuery } from "@/services/mockStockApi";
 import SectionHeading from "../ui/SectionHeading";
-import { Carousel } from "@/pages/Carousal";
 
 export function PortfolioCarousalSection() {
-  const watchlist = useSelector(
-    (state: RootState) => state.watchlist.watchlistState
-  );
+  const { data: watchlist } = useGetWatchlistQuery();
+
+  if (!watchlist) return null;
   return (
-    <div className="px-4">
+    <div className="px-4 flex gap-3 flex-col">
       <SectionHeading title="My Porfolio" />
       <Carousel portfolioStocks={watchlist} />
     </div>

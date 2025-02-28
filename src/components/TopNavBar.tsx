@@ -92,14 +92,12 @@ import { Link } from "react-router";
 // }
 
 function MenuButton() {
-  const drawerState = useSelector(
-    (state: RootState) => state.drawer.drawerState
-  );
+  const drawer = useSelector((state: RootState) => state.drawer.drawer);
 
   const dispatch = useDispatch();
 
   const toggleDrawer = () => {
-    if (drawerState) {
+    if (drawer) {
       dispatch(hideDrawer());
     } else {
       dispatch(showDrawer());

@@ -2,7 +2,6 @@ import stockSymbols from "@/constants/stockSymbols";
 import router from "@/router";
 import type { Stock } from "@/types";
 
-
 // import { AutoSizer, List, ListRowProps } from "react-virtualized";
 
 // import "react-virtualized/styles.css";
@@ -17,6 +16,11 @@ import type { Stock } from "@/types";
 // };
 
 import { useState } from "react";
+import { SmallAreaChart } from "../ui/SmallAreaChart";
+import {
+  smallChartDataDecrease,
+  smallChartDataIncrease,
+} from "@/constants/smallChartData";
 
 interface TableProps {
   stocks: Stock[] | undefined;
@@ -42,8 +46,8 @@ const PaginatedTable = ({ stocks }: TableProps) => {
   console.log("stocks list", stockList);
 
   return (
-    <div className="border-base-content/25 w-full overflow-x-auto">
-      <div className="p-2 w-full sm:p-4 dark:text-gray-800">
+    <div className="border-base-content/25 w-full overflow-x-auto font-ibm_plex">
+      <div className="p-1 w-full sm:p-4 dark:text-gray-800">
         <div className="overflow-x-auto min-h-[400px] flex flex-col justify-between">
           <table className="min-w-full text-xs md:text-sm">
             <colgroup>
@@ -55,16 +59,17 @@ const PaginatedTable = ({ stocks }: TableProps) => {
               <col className="w-24" />
             </colgroup>
             <thead className="dark:text-white">
-              <tr className="text-left w-full border-b">
-                <th className="p-3 w-full md:w-28">Symbol</th>
-                <th className="p-3 w-  hidden md:table-cell">Name</th>
-                <th className="p-3 w-24 hidden md:table-cell">Market Cap</th>
-                <th className="p-3 text-right w-28 ">Price</th>
-                <th className="p-3 text-end w-40">Action</th>
+              <tr className="text-left w-full border-b space-x-4">
+                <th className="p-2 w-2/4 md:w-28">Symbol</th>
+                <th className="p-2 w-[200px]  hidden md:table-cell">Name</th>
+                <th className="p-2 w-32  hidden md:table-cell"></th>
+                <th className="p-2 w-24 hidden md:table-cell">Market Cap</th>
+                <th className="p-2 text-right w-28 ">Price</th>
+                <th className="p-2 text-end md:w-40 w-48">Action</th>
               </tr>
             </thead>
             <tbody>
-              {currentStocks.map((stock) => (
+              {currentStocks.map((stock, index) => (
                 <tr
                   key={stock.symbol}
                   onClick={() => {
@@ -72,9 +77,9 @@ const PaginatedTable = ({ stocks }: TableProps) => {
                       `/stock/${encodeURIComponent(stock.symbol)}`
                     );
                   }}
-                  className="border-b border-opacity-20 dark:border-gray-300 hover:cursor-pointer bg-white dark:bg-dark-foreground hover:opacity-90 text-slate-700 dark:text-slate-200"
+                  className="border-b border-opacity-20 dark:border-gray-300 hover:cursor-pointer dark:bg-dark-foreground hover:opacity-90 text-slate-700 dark:text-slate-200"
                 >
-                  <td className="p-3">
+                  <td className="p-2">
                     <div className="flex items-center gap-1">
                       <img
                         src={stock.logo}
@@ -83,18 +88,29 @@ const PaginatedTable = ({ stocks }: TableProps) => {
                       <p>{stock.symbol}</p>
                     </div>
                   </td>
-                  <td className="p-3 hidden md:table-cell">
+                  <td className="p-2 hidden md:table-cell">
                     <p>{stock.company}</p>
                   </td>
-                  <td className="p-3 hidden md:table-cell">
+                  <td className="p-2 hidden w-32 md:table-cell">
+                    <SmallAreaChart
+                      index={index}
+                      dataKey="value"
+                      chartData={
+                        index % 2 === 0
+                          ? smallChartDataDecrease
+                          : smallChartDataIncrease
+                      }
+                    />
+                  </td>
+                  <td className="p-2 hidden md:table-cell">
                     <p>{stock.market_cap}</p>
                   </td>
 
-                  <td className="p-3 text-right">
+                  <td className="p-2 text-right">
                     <p>${stock.current_price}</p>
                   </td>
-                  <td className="p-3 text-right">
-                    <button className="px-3 py-1 border font-semibold rounded-md dark:bg-green-600 dark:text-gray-50">
+                  <td className="p-2 text-right">
+                    <button className="md:px-3 px-1.5 py-1 border font-semibold rounded-md dark:bg-green-600 dark:text-gray-50">
                       <span>Get Started</span>
                     </button>
                   </td>

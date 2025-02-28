@@ -1,7 +1,7 @@
 // import { monthStocks } from "@/constants/monthStocks";
 import { filterData } from "@/lib/utils/filterData";
 import formatCandlestickData from "@/lib/utils/formatCandlestickData";
-import { useGetCandlestickDataQuery } from "@/services/mockApi";
+import { useGetCandlestickDataQuery } from "@/services/mockStockApi";
 import type { RootState } from "@/store/store";
 import type { CandlestickData, Duration } from "@/types";
 import { ApexOptions } from "apexcharts";

@@ -11,7 +11,7 @@ const SectionWrapper = ({
   return (
     <div
       className={cn(
-        "w-full rounded-md bg-white dark:bg-dark-foreground xl:p-4 p-2",
+        "w-full rounded-md bg-white/20 backdrop-blur-sm dark:bg-dark-foreground xl:p-4 p-2 shadow bg-white",
         className
       )}
     >

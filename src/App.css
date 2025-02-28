@@ -17,6 +17,16 @@ body {
   -ms-overflow-style: none;
 }
 
+
+/* fonts */
+
+@font-face {
+  font-family: "ibm_plex";
+  src: url("/IBM_plex_sans.ttf");
+}
+
+
+
 /* *,
 *::before,
 *::after {

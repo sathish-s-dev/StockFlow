@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import {
   useGetCandlestickDataQuery,
   useGetStocksListQuery,
-} from "@/services/mockApi";
+} from "@/services/mockStockApi";
 
 import ChartSection from "@/components/home/ChartSection";
 import { PortfolioCarousalSection } from "@/components/home/PortfolioCarousalSection";
@@ -66,8 +66,8 @@ const Home = () => {
             </div>
           </SectionWrapper>
         </div>
-        <SectionWrapper className="p-6 xl:p-4 mb-4">
-          <SectionTopBar title="Market" />
+        <SectionWrapper className="xl:p-4 mb-4">
+          <SectionTopBar title="Market" className="px-4 md:px-2" />
           <div className="overflow-y-scroll min-h-96 py-4 font-semibold">
             <PaginatedTable stocks={data} />
           </div>
@@ -78,5 +78,3 @@ const Home = () => {
 };
 
 export default Home;
-
-
