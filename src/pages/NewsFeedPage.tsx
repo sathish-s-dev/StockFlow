@@ -22,8 +22,8 @@ const variants = {
 
 const NewsFeedPage = () => {
   return (
-    <SectionWrapper className="w-full border ">
-      <main className="w-full  px-4 pb-4">
+    <main className="w-full  px-4 pb-4">
+      <SectionWrapper className="w-full ">
         <div className="flex items-center gap-4 pb-4">
           <BackButton />
           <SectionHeading title="News Feed" className="font-bold text-2xl" />
@@ -32,14 +32,15 @@ const NewsFeedPage = () => {
           variants={variants}
           initial="initial"
           whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
           className="grid md:grid-cols-4 gap-4"
         >
           {newsFeedata.feed.slice(0, 10).map((news) => {
             return <FeedCard article={news} />;
           })}
         </motion.div>
-      </main>
-    </SectionWrapper>
+      </SectionWrapper>
+    </main>
   );
 };
 

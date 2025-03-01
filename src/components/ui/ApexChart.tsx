@@ -1,7 +1,8 @@
 // import { monthStocks } from "@/constants/monthStocks";
 import { filterData } from "@/lib/utils/filterData";
 import formatCandlestickData from "@/lib/utils/formatCandlestickData";
-import { useGetCandlestickDataQuery } from "@/services/mockStockApi";
+import generateCandlestickData from "@/lib/utils/generateData";
+// import { useGetCandlestickDataQuery } from "@/services/mockStockApi";
 import type { RootState } from "@/store/store";
 import type { CandlestickData, Duration } from "@/types";
 import { ApexOptions } from "apexcharts";
@@ -17,11 +18,13 @@ interface ApexChartProps {
 
 const ApexChart = ({ chartDuration }: ApexChartProps) => {
   const theme = useSelector((state: RootState) => state.theme);
-  const { data: candlestick } = useGetCandlestickDataQuery();
+  // const { data: candlestick } = useGetCandlestickDataQuery();
 
   const data = useMemo(() => {
+    const candlestick = generateCandlestickData(150, chartDuration.value);
+
     return candlestick?.map(formatCandlestickData) || [];
-  }, [candlestick]);
+  }, [chartDuration]);
 
   // const [filteredData, setFilteredData] = useState(
   //   filterData(data, chartDuration.value)

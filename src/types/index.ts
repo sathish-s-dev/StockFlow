@@ -83,3 +83,10 @@ export interface AreaChartData {
   date: string;
   value: number;
 }
+
+export interface TResponse<T> {
+  message: string;
+  success: boolean;
+  data: T[];
+}
+

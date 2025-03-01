@@ -21,7 +21,7 @@ const StockDetails = () => {
   );
 
   const [chartDuration, setChartDuration] = useState<Duration>({
-    key: "1 month",
+    key: "1M",
     value: 30,
   });
 

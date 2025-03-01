@@ -6,7 +6,7 @@ import drawerReducer from "@/features/drawerSlice";
 import WatchListReducer from "@/features/watchlistSlice";
 import themeReducer from "@/features/themeSlice";
 import storage from "redux-persist/lib/storage"; // LocalStorage
-import { persistReducer, persistStore } from "redux-persist";
+import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE } from "redux-persist";
 import { alphaVantageApi } from "@/services/alphaVantageApi";
 import { mockStockApi } from "@/services/mockStockApi";
 
@@ -32,7 +32,11 @@ export const store = configureStore({
   reducer: persistedReducer,
 
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware()
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    })
       .concat(stocksApi.middleware)
       .concat(alphaVantageApi.middleware)
       .concat(mockStockApi.middleware),

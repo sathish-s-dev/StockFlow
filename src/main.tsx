@@ -7,21 +7,14 @@ import { Provider } from "react-redux";
 import { persistor, store } from "./store/store";
 import { Toaster } from "react-hot-toast";
 import { PersistGate } from "redux-persist/integration/react";
-import { AnimatePresence } from "motion/react";
-
-
-
-
 
 createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <AnimatePresence mode="wait">
-          <RouterProvider router={router} />
-          <Toaster position="top-center" reverseOrder={true} />
-        </AnimatePresence>
-      </PersistGate>
-    </Provider>
-  </StrictMode>
+  // <StrictMode>
+  <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+      <RouterProvider router={router} />
+      <Toaster position="top-center" reverseOrder={true} />
+    </PersistGate>
+  </Provider>
+  // </StrictMode>
 );
