@@ -7,7 +7,7 @@ export function PortfolioCarousalSection() {
 
   if (!watchlist) return null;
   return (
-    <div className="px-4 flex gap-3 flex-col">
+    <div className="flex gap-3 flex-col">
       <SectionHeading title="My Porfolio" />
       <Carousel portfolioStocks={watchlist} />
     </div>

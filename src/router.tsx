@@ -10,15 +10,21 @@ const NewsFeedPage = lazy(() => import("./pages/NewsFeedPage"));
 const Login = lazy(() => import("./pages/LoginPage"));
 const StockDetails = lazy(() => import("./pages/StockDetailsPage"));
 const WatchlistPage = lazy(() => import("./pages/WatchlistPage"));
+<<<<<<< HEAD
 const WalletPage = lazy(() => import("./pages/WalletPage"));
 // import StockDetails from "./pages/StockDetails";
+=======
+>>>>>>> 43209bb6757f5164a2baa8bd524a6061c04b772b
 
 const router = createBrowserRouter([
   {
     path: "",
     element: <Layout />,
     children: [
-      { path: "/", element: <Home /> },
+      {
+        path: "/",
+        element: <Home />,
+      },
       {
         path: "/stock/:symbol",
         element: <StockDetails />,
