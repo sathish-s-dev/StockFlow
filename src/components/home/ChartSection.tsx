@@ -1,36 +1,12 @@
+import { filterData } from "@/lib/utils/filterData";
+import formatCandlestickData from "@/lib/utils/formatCandlestickData";
 import { useGetCandlestickDataQuery } from "@/services/mockStockApi";
-import type { AreaChartData, Stock } from "@/types";
+import type { Stock } from "@/types";
 import { useState } from "react";
+import HomeChart from "../ui/HomeChart";
 import SectionHeading from "../ui/SectionHeading";
 import SectionWrapper from "../ui/SectionWrapper";
 import StockHistorySelection from "./StockHistorySelection";
-import { filterData } from "@/lib/utils/filterData";
-import formatCandlestickData from "@/lib/utils/formatCandlestickData";
-import HomeChart from "../ui/HomeChart";
-import { SmallAreaChart } from "../ui/SmallAreaChart";
-
-const data: AreaChartData[] = [
-  {
-    date: "Page A",
-    value: 100,
-  },
-  {
-    date: "Page B",
-    value: 45,
-  },
-  {
-    date: "Page C",
-    value: 25,
-  },
-  {
-    date: "Page C",
-    value: 23,
-  },
-  {
-    date: "Page C",
-    value: 20,
-  },
-];
 
 function ChartSection({ stock }: { stock: Stock }) {
   const [chartDuration, setChartDuration] = useState({
