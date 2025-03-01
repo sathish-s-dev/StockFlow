@@ -46,6 +46,8 @@ const Home = () => {
     isError: isWatchlistError,
   } = useGetWatchlistQuery();
 
+  console.log(watchlistStocks, "watchlistStocks");
+
   const { isLoading: isStockListLoading, data: stocklist } =
     useGetStocksListQuery();
 
