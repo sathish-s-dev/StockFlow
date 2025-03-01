@@ -97,8 +97,11 @@ function MenuButton() {
   const dispatch = useDispatch();
 
   const toggleDrawer = () => {
-    console.log(drawer, "drawer");
-    dispatch(showDrawer());
+    if (drawer) {
+      dispatch(hideDrawer());
+    } else {
+      dispatch(showDrawer());
+    }
   };
   return (
     <button onClick={toggleDrawer} className="xl:hidden">

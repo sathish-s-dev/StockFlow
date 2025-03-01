@@ -13,7 +13,12 @@ export const mockStockApi = createApi({
   reducerPath: "mockStockApi",
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.VITE_PUBLIC_MOCK_API_BASE_URL,
+    prepareHeaders: (headers) => {
+      headers.set("x-api-key", import.meta.env.VITE_PUBLIC_MOCK_API_KEY);
+      return headers;
+    },
   }),
+
   endpoints: (builder) => ({
     getStocksList: builder.query<Stock[], void>({
       query: () => `stocks`,
@@ -38,7 +43,8 @@ export const mockStockApi = createApi({
         url: `candlestick`,
       }),
       keepUnusedDataFor: 60 * 10, // Cache for 1 day
-      transformResponse: (response: TResponse<CandlestickData>) => response.data,
+      transformResponse: (response: TResponse<CandlestickData>) =>
+        response.data,
     }),
     getWatchlist: builder.query<Stock[], void>({
       query: () => ({
