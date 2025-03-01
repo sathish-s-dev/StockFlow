@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { hideDrawer, showDrawer } from "@/features/drawerSlice";
 import type { RootState } from "@/store/store";
 import { X } from "react-feather";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 import { drawerConfig } from "@/config/drawerConfig";
 
 const Drawer = () => {
@@ -57,14 +57,19 @@ const Drawer = () => {
               </div>
               <div className="flex flex-col space-y-1">
                 {section.items.map((item, idx) => (
-                  <Link
+                  <NavLink
                     key={idx}
                     rel="noopener noreferrer"
                     to={item.path}
-                    className="py-2 px-4 hover:bg-dark-foreground hover:text-white dark:text-slate-300 dark:hover:text-slate-800 dark:hover:bg-slate-50 transition-all duration-300 rounded-md"
+                    className={({ isActive }) =>
+                      cn(
+                        "flex items-center p-2 text-gray-500 rounded-lg dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700",
+                        isActive && "bg-gray-100 dark:bg-gray-700"
+                      )
+                    }
                   >
                     {item.name}
-                  </Link>
+                  </NavLink>
                 ))}
               </div>
             </div>
@@ -72,7 +77,7 @@ const Drawer = () => {
         </nav>
         <div className="flex items-center p-2 mt-12 space-x-4 justify-self-end">
           <img
-            src="https://source.unsplash.com/100x100/?portrait"
+            src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
             alt=""
             className="w-12 h-12 rounded-lg dark:bg-gray-500"
           />
