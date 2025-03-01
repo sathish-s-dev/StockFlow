@@ -12,7 +12,7 @@ const Layout = () => {
     <div className="flex flex-col min-h-screen">
       <div className="grid xl:grid-cols-[auto_1fr]">
         {/* Sidebar */}
-        <div className="relative xl:w-64 w-0 xl:block hidden">
+        <div className="relative xl:w-64 w-0">
           <Drawer />
         </div>
 
