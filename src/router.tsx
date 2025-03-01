@@ -10,6 +10,7 @@ const NewsFeedPage = lazy(() => import("./pages/NewsFeedPage"));
 const Login = lazy(() => import("./pages/LoginPage"));
 const StockDetails = lazy(() => import("./pages/StockDetailsPage"));
 const WatchlistPage = lazy(() => import("./pages/WatchlistPage"));
+const WalletPage = lazy(() => import("./pages/WalletPage"));
 // import StockDetails from "./pages/StockDetails";
 
 const router = createBrowserRouter([
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "/profile",
         element: <ProfilePage />,
+      },
+      {
+        path: "/wallet",
+        element: <WalletPage />,
       },
     ],
   },

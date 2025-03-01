@@ -137,20 +137,13 @@ function TopNavbar() {
         />
       </div>
       <div className="flex items-center gap-4 text-gray-600 dark:text-slate-200 ">
-        <ThemeToggle />
         <Link to="/" className="hidden md:flex">
           <Mail strokeWidth={2} width={20} />
         </Link>
         <Link to="/" className="hidden md:flex">
           <Bell strokeWidth={2} width={20} />
         </Link>
-        <div className="size-10">
-          <img
-            className="h-full w-full rounded-full object-cover object-center"
-            src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-            alt=""
-          />
-        </div>
+        <ThemeToggle />
       </div>
     </div>
   );

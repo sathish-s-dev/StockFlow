@@ -3,7 +3,6 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import { BackButton } from "@/components/BackButton";
 // import PaginatedTable from "@/components/home/VirtualizedStockList"; "@/components/home/VirtualizedStockList";
-import router from "@/router";
 import type { RootState } from "@/store/store";
 import { useSelector } from "react-redux";
 import PaginatedTable from "@/components/home/PaginatedTable";

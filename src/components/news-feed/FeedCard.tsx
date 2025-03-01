@@ -3,8 +3,6 @@ import { Link } from "react-router";
 
 import {
   Card,
-  CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
