@@ -39,7 +39,7 @@ function ChartSection({ stock }: { stock: Stock }) {
             </div>
             <div>
               <SectionHeading title={stock.company} />
-              <p className="text-xs text-dark-foreground dark:text-slate-300">
+              <p className="text-xs text-dark-foreground dark:text-gray-300">
                 {stock.symbol}
               </p>
             </div>
@@ -49,11 +49,11 @@ function ChartSection({ stock }: { stock: Stock }) {
               <p className="text-2xl font-bold text-dark-foreground dark:text-white">
                 &#8377; {stock.current_price}
               </p>
-              <button className="text-xs px-3 py-1 border rounded-full text-dark-foreground dark:text-slate-300">
+              <button className="text-xs px-3 py-1 border rounded-full text-dark-foreground dark:text-gray-300">
                 View All
               </button>
             </div>
-            <p className="text-xs text-dark-foreground dark:text-slate-300">
+            <p className="text-xs text-dark-foreground dark:text-gray-300">
               trend title {stock.change_percent.toFixed(2)}% Last update 03:15
               {/* {dayjs(stock.date).format("hh:mm")} */}
             </p>

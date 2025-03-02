@@ -9,7 +9,7 @@ import { Link } from "react-router";
 
 // function StockSearch() {
 //   return (
-//     <div className="relative bg-slate-50 dark:bg-black w-full ">
+//     <div className="relative bg-gray-50 dark:bg-black w-full ">
 //       {/* <div className="relative w-full max-w-lg">
 //         <input
 //           type="text"
@@ -60,7 +60,7 @@ import { Link } from "react-router";
 //           type="text"
 //           id="Search"
 //           placeholder="chad@rhcp.com"
-//           className="w-full rounded-md px-4 bg-slate-100 border-gray-200 py-2 pe-10 shadow-xs sm:text-sm dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+//           className="w-full rounded-md px-4 bg-gray-100 border-gray-200 py-2 pe-10 shadow-xs sm:text-sm dark:border-gray-700 dark:bg-gray-800 dark:text-white"
 //         />
 
 //         <span className="absolute inset-y-0 end-3 grid w-10 place-content-center">
@@ -136,7 +136,7 @@ function TopNavbar() {
           }}
         />
       </div>
-      <div className="flex items-center gap-4 text-gray-600 dark:text-slate-200 ">
+      <div className="flex items-center gap-4 text-gray-600 dark:text-gray-200 ">
         <Link to="/" className="hidden md:flex">
           <Mail strokeWidth={2} width={20} />
         </Link>

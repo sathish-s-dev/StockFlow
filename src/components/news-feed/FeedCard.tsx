@@ -21,7 +21,7 @@ const NewsFeed = ({ article }: NewsFeedProps) => {
       to={`/feed/${article.title}`}
       className="max-w-xs h-full block"
     >
-      <Card className="h-full bg-white dark:bg-dark-foreground dark:shadow-slate-50/50 dark:text-slate-100 flex flex-col">
+      <Card className="h-full bg-white dark:bg-dark-foreground dark:shadow-gray-50/50 dark:text-gray-100 flex flex-col">
         <CardHeader className="space-y-4">
           <img
             src={article.banner_image}

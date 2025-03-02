@@ -2,19 +2,17 @@ import PaginatedTable from "@/components/home/PaginatedTable";
 import SectionTopBar from "@/components/home/SectionTopBar";
 import StockCard from "@/components/home/StockCard";
 import SectionWrapper from "@/components/ui/SectionWrapper";
-import type { RootState } from "@/store/store";
-import { useSelector } from "react-redux";
 import {
   useGetCandlestickDataQuery,
-  useGetStocksListQuery,
-  useGetWatchlistQuery,
+  useGetStocksListQuery
 } from "@/services/mockStockApi";
+import type { RootState } from "@/store/store";
+import { useSelector } from "react-redux";
 
 import ChartSection from "@/components/home/ChartSection";
 import { PortfolioCarousalSection } from "@/components/home/PortfolioCarousalSection";
 import { Stock } from "@/types";
 import SLoadingScreen from "./LoadingPage";
-import toast from "react-hot-toast";
 
 // todo
 // my portfolio card i have to change
@@ -40,29 +38,23 @@ const Home = () => {
 
   console.log(closeData, "closeData");
 
-  const {
-    data: watchlistStocks,
-    isLoading: isWatchlistLoading,
-    isError: isWatchlistError,
-  } = useGetWatchlistQuery();
+  // const {
+  //   data: watchlistStocks,
+  //   isLoading: isWatchlistLoading,
+  //   isError: isWatchlistError,
+  // } = useGetWatchlistQuery();
+  const watchlistStocks = useSelector(
+    (state: RootState) => state.watchlist.watchlistState
+  )
 
   console.log(watchlistStocks, "watchlistStocks");
 
   const { isLoading: isStockListLoading, data: stocklist } =
     useGetStocksListQuery();
 
-  if (isWatchlistLoading || isStockListLoading) return <SLoadingScreen />;
+  if (isStockListLoading) return <SLoadingScreen />;
 
   if (!stocklist) return null;
-
-  if (isWatchlistError) {
-    toast.error("Something went wrong");
-    return (
-      <div>
-        <p>Something went wrong</p>
-      </div>
-    );
-  }
 
   return (
     <main className="flex px-4 flex-col gap-4">
@@ -88,7 +80,7 @@ function MyFavouritesSection() {
       <SectionTopBar title="My Favourite" />
       <div className="grid py-4">
         {watchlistStocks.length === 0 && (
-          <p className="text-slate-700">
+          <p className="text-gray-700">
             No Stocks Available in Please Add stocks in Favourites
           </p>
         )}

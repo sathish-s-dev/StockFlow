@@ -12,6 +12,7 @@ import { useGetStocksListQuery } from "@/services/mockStockApi";
 import { Stock } from "@/types";
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "react-feather";
+import { Link } from "react-router";
 
 export function Carousel({ portfolioStocks }: { portfolioStocks: Stock[] }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -88,13 +89,14 @@ function PortfolioCard({
   currentIndex: number;
 }) {
   return (
-    <div
+    <Link
+      to={`/stock/${stock.symbol}`}
       key={index}
       className={cn(
-        "dark:bg-dark-foreground min-w-72 px-6 py-3   rounded-xl shadow w-64 min-h-40 flex flex-col justify-center items-center",
+        "dark:bg-dark-foreground min-w-72 px-6 py-3 border dark:border-gray-50/40  rounded-xl shadow w-64 min-h-40 flex flex-col justify-center items-center",
         currentIndex === index
-          ? "shadow-md shadow-[#f6c13b] dark:shadow-[#f6c13b]"
-          : "bg-[#ffffff]"
+          ? "shadow-md shadow-orange-400"
+          : "bg-[#ffffff] shadow-white"
       )}
     >
       <div className="flex h-full flex-col items-start w-full ">
@@ -105,10 +107,10 @@ function PortfolioCard({
             className="size-10 rounded-full invert dark:invert-0"
           />
           <div className="flex flex-col">
-            <p className="text-xl text-dark-foreground dark:text-slate-200">
+            <p className="text-xl text-dark-foreground dark:text-gray-200">
               {stock.symbol}
             </p>
-            <p className="text-xs text-dark-foreground dark:text-slate-200">
+            <p className="text-xs text-dark-foreground dark:text-gray-200">
               {stock.company}
             </p>
           </div>
@@ -132,6 +134,6 @@ function PortfolioCard({
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

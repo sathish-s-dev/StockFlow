@@ -68,8 +68,9 @@ const Drawer = () => {
                     }}
                     className={({ isActive }) =>
                       cn(
-                        "flex items-center p-2 text-gray-500 rounded-lg dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700",
-                        isActive && "bg-gray-100 dark:bg-gray-700"
+                        "flex items-center p-2 text-gray-500 dark:hover:text-gray-800 rounded-lg dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-200",
+                        isActive &&
+                          "bg-gray-100 dark:bg-gray-200 dark:text-gray-800"
                       )
                     }
                   >
@@ -87,12 +88,12 @@ const Drawer = () => {
             className="w-12 h-12 rounded-lg dark:bg-gray-500"
           />
           <div>
-            <h2 className="text-lg font-semibold">Sathish S</h2>
+            <h2 className="text-lg font-semibold dark:text-white">Sathish S</h2>
             <span className="flex items-center space-x-1">
               <Link
                 rel="noopener noreferrer"
                 to="/profile"
-                className="text-xs hover:underline dark:text-gray-600"
+                className="text-xs hover:underline dark:text-gray-300"
               >
                 View profile
               </Link>

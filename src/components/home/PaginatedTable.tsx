@@ -77,7 +77,7 @@ const PaginatedTable = ({ stocks }: TableProps) => {
                       `/stock/${encodeURIComponent(stock.symbol)}`
                     );
                   }}
-                  className="border-b border-opacity-20 dark:border-gray-300 hover:cursor-pointer dark:bg-dark-foreground hover:opacity-90 text-slate-700 dark:text-slate-200"
+                  className="border-b border-opacity-20 dark:border-gray-300 hover:cursor-pointer dark:bg-dark-foreground hover:opacity-90 text-gray-700 dark:text-gray-200"
                 >
                   <td className="p-2">
                     <div className="flex items-center gap-1">
@@ -147,7 +147,7 @@ function Pagination({
         type="button"
         onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
         disabled={currentPage === 1}
-        className="inline-flex items-center disabled:cursor-not-allowed disabled:bg-slate-300 justify-center w-8 h-8 py-0 border rounded-md shadow-md dark:bg-gray-50 dark:border-gray-100"
+        className="inline-flex items-center disabled:cursor-not-allowed disabled:bg-gray-300 justify-center w-8 h-8 py-0 border rounded-md shadow-md dark:bg-gray-50 dark:border-gray-100"
       >
         <svg
           viewBox="0 0 24 24"
@@ -174,7 +174,7 @@ function Pagination({
         type="button"
         onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
         disabled={currentPage === totalPages}
-        className="inline-flex items-center disabled:cursor-not-allowed disabled:bg-slate-300 justify-center w-8 h-8 py-0 border rounded-md shadow-md dark:bg-gray-50 dark:border-gray-100"
+        className="inline-flex items-center disabled:cursor-not-allowed disabled:bg-gray-300 justify-center w-8 h-8 py-0 border rounded-md shadow-md dark:bg-gray-50 dark:border-gray-100"
       >
         <svg
           viewBox="0 0 24 24"

@@ -17,7 +17,7 @@ const Layout = () => {
         </div>
 
         {/* Main Content */}
-        <div className="xl:h-screen bg-no-repeat min-w-0 overflow-auto w-full bg-slate-50 dark:bg-black flex flex-col gap-4 relative">
+        <div className="xl:h-screen bg-no-repeat min-w-0 overflow-auto w-full bg-gray-50 dark:bg-black flex flex-col gap-4 relative">
           <TopNavbar />
           <AnimatePresence mode="wait">
             <motion.div

@@ -36,7 +36,7 @@ const NewsFeedPage = () => {
           className="grid md:grid-cols-4 gap-4"
         >
           {newsFeedata.feed.slice(0, 10).map((news) => {
-            return <FeedCard article={news} />;
+            return <FeedCard key={news.title} article={news} />;
           })}
         </motion.div>
       </SectionWrapper>

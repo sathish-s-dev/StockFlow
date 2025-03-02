@@ -1,4 +1,3 @@
-
 ## **Project Documentation**
 
 ### **Project Overview**
@@ -6,6 +5,7 @@
 - **Version**: `0.0.0`
 - **Type**: `module` (ES Modules)
 - **Package Manager**: `pnpm@9.9.0`
+- **Deployed URL**: [https://stockinc.vercel.app/](https://stockinc.vercel.app/)
 
 ---
 
@@ -21,6 +21,12 @@ The project is structured as follows:
 
 ---
 
+
+### **Deployed URL**
+The application is deployed and accessible at:  
+**[https://stockinc.vercel.app/](https://stockinc.vercel.app/)**  
+
+---
 
 ### **Setup Instructions**
 
@@ -38,7 +44,8 @@ pnpm install
 #### **3. Configure Environment Variables**
 If your project uses environment variables, create a `.env` file in the root directory and add the necessary variables. For example:
 ```env
-VITE_API_URL=https://api.example.com/
+VITE_PUBLIC_MOCK_API_KEY=apikey (Actual Api Key)
+VITE_PUBLIC_MOCK_API_BASE_URL=https://stockinc-backend.onrender.com/
 ```
 
 #### **4. Run the Development Server**
@@ -128,6 +135,7 @@ Set up a CI/CD pipeline using GitHub Actions, GitLab CI, or another tool to auto
 
 ---
 
+
 ### **Key Features**
 - **Modern Build Tool**: Uses Vite for fast development and production builds.
 - **Type Safety**: Leverages TypeScript for better developer experience and fewer runtime errors.
@@ -200,7 +208,6 @@ The following development dependencies are used for building, linting, and type-
 
 ---
 
-
 ### **Future Improvements**
 - Add unit and integration tests using tools like Jest and React Testing Library.
 - Set up CI/CD pipelines for automated testing and deployment.
@@ -208,4 +215,3 @@ The following development dependencies are used for building, linting, and type-
 - Add documentation for components and utilities using tools like Storybook or Docz.
 
 ---
-

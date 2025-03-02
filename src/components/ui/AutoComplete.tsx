@@ -77,7 +77,7 @@ export default function Autocomplete({
             <li
               key={option}
               className={`px-4 py-2 text-sm cursor-pointer hover:bg-blue-50 dark:hover:bg-gray-800 hover:text-white hover:opacity-90 ${
-                selectedIndex === index ? "bg-slate-50 text-slate-900" : ""
+                selectedIndex === index ? "bg-gray-50 text-gray-900" : ""
               }`}
               onClick={() => handleSelect(option)}
             >

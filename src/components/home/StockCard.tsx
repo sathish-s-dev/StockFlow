@@ -21,8 +21,8 @@ const StockCard = ({ stock }: { stock: Stock }) => {
             />
           </div>
           <div>
-            <h3 className=" text-slate-800 dark:text-white">{stock.company}</h3>
-            <p className="text-sm text-slate-500">{stock.symbol}</p>
+            <h3 className=" text-gray-800 dark:text-white">{stock.company}</h3>
+            <p className="text-sm text-gray-500">{stock.symbol}</p>
           </div>
         </div>
       </div>
@@ -32,7 +32,7 @@ const StockCard = ({ stock }: { stock: Stock }) => {
           &#8377; {stock.current_price}
         </p>
         <p
-          className={cn("text-sm text-slate-700 dark:text-slate-100")}
+          className={cn("text-sm text-gray-700 dark:text-gray-100")}
           style={{
             color: changePercentage > 0 ? "#22c55e" : "#ef4444 ",
           }}

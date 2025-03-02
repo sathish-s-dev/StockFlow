@@ -54,6 +54,13 @@ export const mockStockApi = createApi({
       keepUnusedDataFor: 60 * 10, // Cache for 1 day
       transformResponse: (response: TResponse<Stock>) => response.data,
     }),
+    addStockToWatchlist: builder.mutation<Stock[], string>({
+      query: (symbol) => ({
+        url: `watchlist/${symbol}`,
+        method: "POST",
+      }),
+      transformResponse: (response: TResponse<Stock>) => response.data,
+    }),
   }),
 });
 
