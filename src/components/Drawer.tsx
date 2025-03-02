@@ -61,6 +61,11 @@ const Drawer = () => {
                     key={idx}
                     rel="noopener noreferrer"
                     to={item.path}
+                    onClick={() => {
+                      if (window.innerWidth < drawerConfig.BREAKPOINT) {
+                        dispatch(hideDrawer());
+                      }
+                    }}
                     className={({ isActive }) =>
                       cn(
                         "flex items-center p-2 text-gray-500 rounded-lg dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700",

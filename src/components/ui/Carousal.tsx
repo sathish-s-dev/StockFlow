@@ -7,6 +7,7 @@ import {
   smallChartDataIncrease,
   smallChartDataDecrease,
 } from "@/constants/smallChartData";
+import { cn } from "@/lib/utils/cn";
 import { useGetStocksListQuery } from "@/services/mockStockApi";
 import { Stock } from "@/types";
 import { useState } from "react";
@@ -35,17 +36,28 @@ export function Carousel({ portfolioStocks }: { portfolioStocks: Stock[] }) {
   return (
     <SectionWrapper className="relative flex items-center w-full pt-3 ">
       {/* Scrollable Container */}
-      <div className="w-full overflow-hidden px-16  py-4">
+      <div className="w-full overflow-hidden md:px-16 px-4  py-4">
         <div
           className="flex space-x-4 transition-transform duration-300 min-h-32"
           style={{ transform: `translateX(-${currentIndex * itemWidth}px)` }}
         >
-          {Array.from({ length: 3 }).map((_, index) => (
-            <PortfolioCard key={index} index={index} stock={stocks[0]} />
-          ))}
-          {portfolioStocks.map((stock, index) => (
-            <PortfolioCard key={index} index={index} stock={stock} />
-          ))}
+          {portfolioStocks.length === 0
+            ? Array.from({ length: 3 }).map((_, index) => (
+                <PortfolioCard
+                  currentIndex={currentIndex}
+                  key={index}
+                  index={index}
+                  stock={stocks[0]}
+                />
+              ))
+            : portfolioStocks.map((stock, index) => (
+                <PortfolioCard
+                  key={index}
+                  currentIndex={currentIndex}
+                  index={index}
+                  stock={stock}
+                />
+              ))}
         </div>
       </div>
 
@@ -66,11 +78,24 @@ export function Carousel({ portfolioStocks }: { portfolioStocks: Stock[] }) {
   );
 }
 
-function PortfolioCard({ index, stock }: { index: number; stock: Stock }) {
+function PortfolioCard({
+  index,
+  stock,
+  currentIndex,
+}: {
+  index: number;
+  stock: Stock;
+  currentIndex: number;
+}) {
   return (
     <div
       key={index}
-      className=" dark:bg-dark-foreground min-w-72 px-6 py-3 dark:shadow-white/40 rounded-xl shadow w-64 min-h-40 flex flex-col justify-center items-center"
+      className={cn(
+        "dark:bg-dark-foreground min-w-72 px-6 py-3   rounded-xl shadow w-64 min-h-40 flex flex-col justify-center items-center",
+        currentIndex === index
+          ? "shadow-md shadow-[#f6c13b] dark:shadow-[#f6c13b]"
+          : "bg-[#ffffff]"
+      )}
     >
       <div className="flex h-full flex-col items-start w-full ">
         <div className="flex items-center gap-2 h-full">

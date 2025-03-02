@@ -50,7 +50,7 @@ export default function HomeChart({ duration }: { duration: number }) {
           tickLine={false}
           tickFormatter={(str) => {
             const date = dayjs(str);
-            console.log(date.date() % 7 === 0, date.format("MMM, D"));
+            // console.log(date.date() % 7 === 0, date.format("MMM, D"));
             return date.date() % 7 === 0 ? date.format("MMM, D") : "";
           }}
         />

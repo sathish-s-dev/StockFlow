@@ -35,7 +35,7 @@ const StockDetails = () => {
 
   const { data } = useGetStockQuoteQuery(params?.symbol || "AAPL");
 
-  console.log(data, "data");
+  console.log(data, "stock details page data");
 
   if (!data) return null;
 

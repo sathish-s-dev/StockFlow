@@ -27,16 +27,17 @@ export const mockStockApi = createApi({
     }),
     getStockQuote: builder.query<Stock[], string>({
       query: (symbol) => ({
-        url: `stocks/?symbol=${symbol}`,
+        url: `stocks/${symbol}`,
       }),
       keepUnusedDataFor: 60 * 10, // Cache for 1 day
       transformResponse: (response: TResponse<Stock>) => response.data,
     }),
     getSymbols: builder.query<string[], void>({
       query: () => ({
-        url: `symbols`,
+        url: `/stocks/symbols`,
       }),
       keepUnusedDataFor: 60 * 10, // Cache for 1 day
+      transformResponse: (response: TResponse<string>) => response.data,
     }),
     getCandlestickData: builder.query<CandlestickData[], void>({
       query: () => ({

@@ -1,5 +1,5 @@
 import { lazy } from "react";
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter, RouteObject } from "react-router";
 import Layout from "./Layout";
 import Home from "./pages/HomePage";
 
@@ -7,14 +7,15 @@ import Home from "./pages/HomePage";
 const FeedArticlePage = lazy(() => import("./pages/FeedArticlePage"));
 const ProfilePage = lazy(() => import("./pages/ProfilePage"));
 const NewsFeedPage = lazy(() => import("./pages/NewsFeedPage"));
-const Login = lazy(() => import("./pages/LoginPage"));
+const LoginPage = lazy(() => import("./pages/LoginPage"));
+const SignupPage = lazy(() => import("./pages/SignupPage"));
 const StockDetails = lazy(() => import("./pages/StockDetailsPage"));
 const WatchlistPage = lazy(() => import("./pages/WatchlistPage"));
 const WalletPage = lazy(() => import("./pages/WalletPage"));
 
-const router = createBrowserRouter([
+const routes: RouteObject[] = [
   {
-    path: "",
+    path: "/",
     element: <Layout />,
     children: [
       {
@@ -49,8 +50,14 @@ const router = createBrowserRouter([
   },
   {
     path: "/login",
-    element: <Login />,
+    element: <LoginPage />,
   },
-]);
+  {
+    path: "/register",
+    element: <SignupPage />,
+  },
+];
+
+const router = createBrowserRouter(routes);
 
 export default router;
