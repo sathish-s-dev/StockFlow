@@ -1,5 +1,5 @@
 import PaginatedTable from "@/components/home/PaginatedTable";
-import SectionTopbar from "@/components/home/SectionTopbar";
+import { SectionTopbar } from "@/components/home/SectionTopbar";
 import StockCard from "@/components/home/StockCard";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import {

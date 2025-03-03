@@ -7,10 +7,7 @@ interface SectionTopbarProps {
   className?: string;
 }
 
-export default function SectionTopbar({
-  title,
-  className,
-}: SectionTopbarProps) {
+export function SectionTopbar({ title, className }: SectionTopbarProps) {
   return (
     <div className={cn("w-full flex items-center justify-between", className)}>
       <SectionHeading title={title} />

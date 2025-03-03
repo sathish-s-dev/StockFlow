@@ -2,6 +2,7 @@ import { lazy } from "react";
 import { createBrowserRouter, RouteObject } from "react-router";
 import Layout from "./Layout";
 import Home from "./pages/HomePage";
+import NotFound from "./pages/NotFound";
 
 // code splitting using lazy loading components
 const FeedArticlePage = lazy(() => import("./pages/FeedArticlePage"));
@@ -55,6 +56,10 @@ const routes: RouteObject[] = [
   {
     path: "/register",
     element: <SignupPage />,
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ];
 
