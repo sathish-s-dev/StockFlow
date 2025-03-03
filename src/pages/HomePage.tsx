@@ -11,7 +11,7 @@ import { useSelector } from "react-redux";
 
 import ChartSection from "@/components/home/ChartSection";
 import { PortfolioCarousalSection } from "@/components/home/PortfolioCarousalSection";
-import { Stock } from "@/types";
+import type { Stock } from "@/types";
 import { toast } from "react-hot-toast";
 import { useEffect } from "react";
 
