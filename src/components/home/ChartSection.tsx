@@ -7,6 +7,7 @@ import HomeChart from "../ui/HomeChart";
 import SectionHeading from "../ui/SectionHeading";
 import SectionWrapper from "../ui/SectionWrapper";
 import StockHistorySelection from "./StockHistorySelection";
+import Text from "../ui/Text";
 
 function ChartSection({ stock }: { stock: Stock }) {
   const [chartDuration, setChartDuration] = useState({
@@ -46,17 +47,16 @@ function ChartSection({ stock }: { stock: Stock }) {
           </div>
           <div className="flex md:items-end flex-col">
             <div className="flex items-center gap-2">
-              <p className="text-2xl font-bold text-dark-foreground dark:text-white">
+              <Text className="text-2xl font-bold">
                 &#8377; {stock.current_price}
-              </p>
+              </Text>
               <button className="text-xs px-3 py-1 border rounded-full text-dark-foreground dark:text-gray-300">
                 View All
               </button>
             </div>
-            <p className="text-xs text-dark-foreground dark:text-gray-300">
+            <Text className="text-xs dark:text-gray-300">
               trend title {stock.change_percent.toFixed(2)}% Last update 03:15
-              {/* {dayjs(stock.date).format("hh:mm")} */}
-            </p>
+            </Text>
           </div>
         </div>
         <StockHistorySelection
@@ -64,33 +64,7 @@ function ChartSection({ stock }: { stock: Stock }) {
           setChartDuration={setChartDuration}
         />
       </div>
-      {/* <ApexChart
-        symbol={symbol}
-        chartDuration={chartDuration}
-        setChartDuration={setChartDuration}
-      /> */}
-
-      {/* <ComposedRechart /> */}
       <HomeChart duration={chartDuration.value} />
-      {/* <SmallAreaChart chartData={data} dataKey="value" index={0} /> */}
-
-      {/* <ResponsiveContainer width={"100%"} height={250}>
-        <LineChart data={dataValue}>
-          <Line
-            type="monotoneX"
-            stopColor="#00ff0f"
-            label={"close"}
-            dataKey="close"
-            stroke="#000"
-            fill="#f0ff00"
-          />
-
-          <CartesianGrid strokeDasharray="3 3" />
-          <Tooltip />
-          <XAxis dataKey={"date"} />
-          <YAxis dataKey={"close"} />
-        </LineChart>
-      </ResponsiveContainer> */}
     </SectionWrapper>
   );
 }

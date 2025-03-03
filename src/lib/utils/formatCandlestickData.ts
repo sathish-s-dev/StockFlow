@@ -1,4 +1,4 @@
-import { CandlestickData } from "@/types";
+import type { CandlestickData } from "@/types";
 import dayjs from "dayjs";
 
 const formatCandlestickData = (item: CandlestickData): CandlestickData => {

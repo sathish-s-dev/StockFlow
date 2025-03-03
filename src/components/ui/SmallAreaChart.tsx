@@ -1,4 +1,4 @@
-import { AreaChartData } from "@/types";
+import type { AreaChartData } from "@/types";
 import { ResponsiveContainer, AreaChart, Area } from "recharts";
 
 interface SmallAreaChartProps {

@@ -9,7 +9,7 @@ import {
 } from "@/constants/smallChartData";
 import { cn } from "@/lib/utils/cn";
 import { useGetStocksListQuery } from "@/services/mockStockApi";
-import { Stock } from "@/types";
+import type { Stock } from "@/types";
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "react-feather";
 import { Link } from "react-router";
