@@ -13,7 +13,7 @@ export function CustomTooltip({
   return (
     <div className="tooltip">
       <h4>{dayjs(label).format("dddd, D MMM, YYYY")}</h4>
-      <p>${payload[0]?.value?.toFixed(2)} USD</p>
+      <p>&#8377; {payload[0]?.value?.toFixed(2)} INR</p>
     </div>
   );
 }

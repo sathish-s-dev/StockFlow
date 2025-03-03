@@ -1,5 +1,5 @@
 import PaginatedTable from "@/components/home/PaginatedTable";
-import SectionTopBar from "@/components/home/SectionTopBar";
+import SectionTopbar from "@/components/home/SectionTopBar";
 import StockCard from "@/components/home/StockCard";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import {
@@ -87,7 +87,7 @@ function MyFavouritesSection() {
 
   return (
     <SectionWrapper className="p-6 xl:p-4">
-      <SectionTopBar title="My Favourite" />
+      <SectionTopbar title="My Favourite" />
       <div className="grid py-4">
         {watchlistStocks.length === 0 && (
           <p className="text-gray-700">
@@ -109,7 +109,7 @@ function MarketTrendsSection({
 }) {
   return (
     <SectionWrapper className="xl:p-4 mb-4">
-      <SectionTopBar title="Market" className="px-4 md:px-2" />
+      <SectionTopbar title="Market" className="px-4 md:px-2" />
       <div className="overflow-y-scroll min-h-96 py-4 font-semibold">
         {data ? <PaginatedTable stocks={data} /> : <div>loading</div>}
       </div>

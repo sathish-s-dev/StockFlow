@@ -2,17 +2,19 @@ import { Link } from "react-router";
 import SectionHeading from "../ui/SectionHeading";
 import { cn } from "@/lib/utils/cn";
 
-export default function SectionTopBar({
-  title,
-  className,
-}: {
+interface SectionTopbarProps {
   title: string;
   className?: string;
-}) {
+}
+
+export default function SectionTopbar({
+  title,
+  className,
+}: SectionTopbarProps) {
   return (
     <div className={cn("w-full flex items-center justify-between", className)}>
       <SectionHeading title={title} />
-      <Link className="text-sm text-blue-600" to="/">
+      <Link className="text-sm text-orange-400" to="/">
         See All
       </Link>
     </div>

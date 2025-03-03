@@ -8,6 +8,7 @@ import SectionHeading from "../ui/SectionHeading";
 import SectionWrapper from "../ui/SectionWrapper";
 import StockHistorySelection from "./StockHistorySelection";
 import Text from "../ui/Text";
+import { Link } from "react-router";
 
 function ChartSection({ stock }: { stock: Stock }) {
   const [chartDuration, setChartDuration] = useState({
@@ -50,9 +51,12 @@ function ChartSection({ stock }: { stock: Stock }) {
               <Text className="text-2xl font-bold">
                 &#8377; {stock.current_price}
               </Text>
-              <button className="text-xs px-3 py-1 border rounded-full text-dark-foreground dark:text-gray-300">
+              <Link
+                to={`/stock/${stock.symbol}`}
+                className="text-xs px-3 py-1 border rounded-full text-dark-foreground dark:text-gray-300"
+              >
                 View All
-              </button>
+              </Link>
             </div>
             <Text className="text-xs dark:text-gray-300">
               trend title {stock.change_percent.toFixed(2)}% Last update 03:15

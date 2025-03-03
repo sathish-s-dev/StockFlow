@@ -8,6 +8,7 @@ export function PortfolioCarousalSection() {
   const watchlist = useSelector((state: RootState) => state.watchlist.watchlistState);
 
   if (!watchlist) return null;
+  
   return (
     <div className="flex gap-3 flex-col">
       <SectionHeading title="My Porfolio" />

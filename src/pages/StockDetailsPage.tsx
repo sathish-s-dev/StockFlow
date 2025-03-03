@@ -12,7 +12,7 @@ import { useState } from "react";
 import { Check, Plus, X } from "react-feather";
 // import toast from "react-hot-toast";
 import { useGetStockQuoteQuery } from "@/services/mockStockApi";
-import type { Duration } from "@/types";
+import type { Duration, Stock } from "@/types";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { BackButton } from "@/components/BackButton";
@@ -116,28 +116,8 @@ const StockDetails = () => {
           </div>
         </div>
       </div>
-      <SectionWrapper>
-        <div className="flex flex-col md:flex-row flex-wrap gap-4 justify-between p-4">
-          <div className="flex flex-col gap-2 text-gray-900 dark:text-gray-100">
-            <p className="text-sm">Market Cap</p>
-            <p className="text-xl">&#36; {data[0].market_cap}</p>
-            <p></p>
-          </div>
-          <div className="flex flex-col gap-2 text-gray-900 dark:text-gray-100">
-            <p className="text-sm">Volueme</p>
-            <p className="text-xl">{data[0].volume}</p>
-          </div>
-          <div className="flex flex-col gap-2 text-gray-900 dark:text-gray-100">
-            <p className="text-sm">Fully Dilutted Market Cap</p>
-            <p className="text-xl">&#36; {data[0].market_cap}</p>
-          </div>
-          <div className="flex flex-col gap-2 text-gray-900 dark:text-gray-100">
-            <p className="text-sm">Market Price</p>
-            <p className="text-xl">&#36; {data[0].current_price}</p>
-          </div>
-        </div>
-      </SectionWrapper>
-      <SectionHeading title="Chart"></SectionHeading>
+      <StockDetailsSection data={data[0]} />
+      <SectionHeading title="Chart" />
       <SectionWrapper>
         <StockHistorySelection
           chartDuration={chartDuration}
@@ -154,3 +134,29 @@ const StockDetails = () => {
 };
 
 export default StockDetails;
+
+function StockDetailsSection({ data }: { data: Stock }) {
+  return (
+    <SectionWrapper>
+      <div className="flex flex-col md:flex-row flex-wrap gap-4 justify-between p-4">
+        <div className="flex flex-col gap-2 text-gray-900 dark:text-gray-100">
+          <p className="text-sm">Market Cap</p>
+          <p className="text-xl">&#36; {data.market_cap}</p>
+          <p></p>
+        </div>
+        <div className="flex flex-col gap-2 text-gray-900 dark:text-gray-100">
+          <p className="text-sm">Volueme</p>
+          <p className="text-xl">{data.volume}</p>
+        </div>
+        <div className="flex flex-col gap-2 text-gray-900 dark:text-gray-100">
+          <p className="text-sm">Fully Dilutted Market Cap</p>
+          <p className="text-xl">&#36; {data.market_cap}</p>
+        </div>
+        <div className="flex flex-col gap-2 text-gray-900 dark:text-gray-100">
+          <p className="text-sm">Market Price</p>
+          <p className="text-xl">&#36; {data.current_price}</p>
+        </div>
+      </div>
+    </SectionWrapper>
+  );
+}

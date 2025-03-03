@@ -18,7 +18,7 @@ function generateData(duration: number) {
   for (let num = duration; num >= 0; num--) {
     data.push({
       date: dayjs().subtract(num, "day").format("YYYY-MM-DD"),
-      value: 5 + +(Math.random() * 2).toFixed(2),
+      value: 2650 + +(Math.random() * 10).toFixed(2),
     });
   }
 
@@ -48,10 +48,10 @@ export default function HomeChart({ duration }: { duration: number }) {
           dataKey="date"
           axisLine={false}
           tickLine={false}
+          interval={0} // Force showing all labels
           tickFormatter={(str) => {
             const date = dayjs(str);
-            // console.log(date.date() % 7 === 0, date.format("MMM, D"));
-            return date.date() % 7 === 0 ? date.format("MMM, D") : "";
+            return date.date() % 7 === 0 ? date.format("MMM D") : "";
           }}
         />
 
@@ -60,7 +60,8 @@ export default function HomeChart({ duration }: { duration: number }) {
           axisLine={false}
           tickLine={false}
           tickCount={8}
-          tickFormatter={(number) => `$${number.toFixed(2)}`}
+          tickFormatter={(number) => `₹ ${number.toFixed(1)}`}
+          domain={[2600, "auto"]}
         />
 
         <Tooltip content={<CustomTooltip />} />

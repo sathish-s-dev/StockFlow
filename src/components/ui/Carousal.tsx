@@ -8,7 +8,7 @@ import {
   smallChartDataDecrease,
 } from "@/constants/smallChartData";
 import { cn } from "@/lib/utils/cn";
-import { useGetStocksListQuery } from "@/services/mockStockApi";
+// import { useGetStocksListQuery } from "@/services/mockStockApi";
 import type { Stock } from "@/types";
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "react-feather";
@@ -28,11 +28,25 @@ export function Carousel({ portfolioStocks }: { portfolioStocks: Stock[] }) {
     setCurrentIndex((prev) => Math.min(prev + 1, maxIndex - 3)); // Prevent overflow
   };
 
-  const { data: stocks } = useGetStocksListQuery();
+  // const { data: stocks } = useGetStocksListQuery();
 
-  if (!stocks) {
-    return <div>Loading...</div>;
-  }
+  // if (!stocks) {
+  //   return <div>Loading...</div>;
+  // }
+  const stock = {
+    id: 1,
+    symbol: "RELIANCE",
+    company: "Reliance Industries Limited",
+    sector: "Energy",
+    logo: "https://images.financialmodelingprep.com/symbol/AAPL.png",
+    current_price: 2630,
+    change: 35,
+    change_percent: 1.35,
+    market_cap: "15.2T",
+    volume: "10.5M",
+    pe_ratio: 22.5,
+    dividend_yield: 0.8,
+  };
 
   return (
     <SectionWrapper className="relative flex items-center w-full pt-3 ">
@@ -48,7 +62,7 @@ export function Carousel({ portfolioStocks }: { portfolioStocks: Stock[] }) {
                   currentIndex={currentIndex}
                   key={index}
                   index={index}
-                  stock={stocks[0]}
+                  stock={stock}
                 />
               ))
             : portfolioStocks.map((stock, index) => (
