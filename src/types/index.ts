@@ -52,17 +52,6 @@ export interface Stock {
   volume: string;
   pe_ratio: number;
   dividend_yield: number;
-  candlestick_data: {
-    date: string;
-    open: string;
-    high: string;
-    low: string;
-    close: string;
-    "adjusted close": string;
-    volume: string;
-    "dividend amount": string;
-    "split coefficient": string;
-  }[];
 }
 
 export interface CandlestickData {
@@ -89,4 +78,3 @@ export interface TResponse<T> {
   success: boolean;
   data: T[];
 }
-

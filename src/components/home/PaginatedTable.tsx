@@ -21,6 +21,7 @@ import {
   smallChartDataDecrease,
   smallChartDataIncrease,
 } from "@/constants/smallChartData";
+import { Pagination } from "../ui/Pagination";
 
 interface TableProps {
   stocks: Stock[] | undefined;
@@ -49,7 +50,7 @@ const PaginatedTable = ({ stocks }: TableProps) => {
     <div className="border-base-content/25 w-full overflow-x-auto font-ibm_plex">
       <div className="p-1 w-full sm:p-4 dark:text-gray-800">
         <div className="overflow-x-auto min-h-[400px] flex flex-col justify-between">
-          <table className="min-w-full text-xs md:text-sm">
+          <table className="min-w-full text-xs md:text-sm min-h-[400px]">
             <colgroup>
               <col />
               <col />
@@ -77,7 +78,7 @@ const PaginatedTable = ({ stocks }: TableProps) => {
                       `/stock/${encodeURIComponent(stock.symbol)}`
                     );
                   }}
-                  className="border-b border-opacity-20 dark:border-gray-300 hover:cursor-pointer dark:bg-dark-foreground hover:opacity-90 text-gray-700 dark:text-gray-200"
+                  className="border-b border-opacity-20 max-h-10  dark:border-gray-300 hover:cursor-pointer dark:bg-dark-foreground hover:opacity-90 text-gray-700 dark:text-gray-200"
                 >
                   <td className="p-2">
                     <div className="flex items-center gap-1">
@@ -130,64 +131,3 @@ const PaginatedTable = ({ stocks }: TableProps) => {
 };
 
 export default PaginatedTable;
-
-function Pagination({
-  currentPage,
-  totalPages,
-  setCurrentPage,
-}: {
-  currentPage: number;
-  totalPages: number;
-  setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
-}) {
-  return (
-    <div className="flex justify-center space-x-1 dark:text-gray-800">
-      <button
-        title="previous"
-        type="button"
-        onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-        disabled={currentPage === 1}
-        className="inline-flex items-center disabled:cursor-not-allowed disabled:bg-gray-300 justify-center w-8 h-8 py-0 border rounded-md shadow-md dark:bg-gray-50 dark:border-gray-100"
-      >
-        <svg
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth="2"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="w-4"
-        >
-          <polyline points="15 18 9 12 15 6"></polyline>
-        </svg>
-      </button>
-      <button
-        type="button"
-        title="Page 1"
-        className="inline-flex items-center justify-center w-8 h-8 text-sm font-semibold border rounded shadow-md dark:bg-gray-50 dark:text-green-600 dark:border-green-600"
-      >
-        {currentPage}
-      </button>
-
-      <button
-        title="next"
-        type="button"
-        onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-        disabled={currentPage === totalPages}
-        className="inline-flex items-center disabled:cursor-not-allowed disabled:bg-gray-300 justify-center w-8 h-8 py-0 border rounded-md shadow-md dark:bg-gray-50 dark:border-gray-100"
-      >
-        <svg
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth="2"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="w-4"
-        >
-          <polyline points="9 18 15 12 9 6"></polyline>
-        </svg>
-      </button>
-    </div>
-  );
-}
