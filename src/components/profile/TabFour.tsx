@@ -1,49 +1,67 @@
-import { useFormContext, Controller } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
+import {
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "../ui/Form";
+import { Input } from "../ui/Input";
 import { TabWrapper } from "./TabWrapper";
-import { FormInput } from "./TabThree";
+
+import { useEffect, useState } from "react";
 
 export function TabFour() {
   const { control, watch, setValue, formState } = useFormContext();
   const photo = watch("photo");
+  const [photoURL, setPhotoURL] = useState<string>("");
+
+  useEffect(() => {
+    if (photo instanceof File) {
+      const url = URL.createObjectURL(photo);
+      setPhotoURL(url);
+      return () => {
+        URL.revokeObjectURL(url);
+        setPhotoURL("");
+      };
+    } else {
+      setPhotoURL("");
+    }
+  }, [photo]);
 
   return (
     <TabWrapper title="Upload Photo">
-      {/* File Upload */}
       <div>
-        <Controller
-          name="photo"
+        <FormField
           control={control}
-          render={() => (
-            <label className="cursor-pointer px-4 py-2 bg-emerald-500 text-white font-medium rounded-lg shadow-md hover:bg-emerald-600 transition duration-300">
-              Choose File
-              <FormInput
-                type="file"
-                accept="image/*"
-                className="hidden"
-                onChange={(e) => {
-                  if (e.target.files && e.target.files.length > 0) {
-                    setValue("photo", e.target.files[0], {
-                      shouldValidate: true,
-                    });
-                  }
-                }}
-              />
-            </label>
+          name="photo"
+          render={({ field: { ref } }) => (
+            <FormItem>
+              <FormLabel>Select Photo</FormLabel>
+              <FormControl>
+                <Input
+                  type="file"
+                  accept="image/*"
+                  className="hidden"
+                  ref={ref}
+                  onChange={(e) => {
+                    const file = e.target.files?.[0] || null;
+                    setValue("photo", file);
+                  }}
+                />
+              </FormControl>
+              {formState.errors.photo && (
+                <FormMessage>
+                  {JSON.stringify(formState.errors.photo)}
+                </FormMessage>
+              )}
+            </FormItem>
           )}
         />
-
-        {/* ✅ Display Validation Errors */}
-        {formState.errors.photo && (
-          <p className="text-red-500">
-            {JSON.stringify(formState.errors.photo.message)}
-          </p>
-        )}
-
-        {/* Show Image Preview */}
-        {photo instanceof File && (
+        {photoURL && (
           <div className="mt-4 flex justify-center">
             <img
-              src={URL.createObjectURL(photo)}
+              src={photoURL}
               alt="Uploaded Preview"
               className="object-cover shadow max-h-60 w-full"
             />

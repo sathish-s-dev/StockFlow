@@ -2,11 +2,16 @@ import { useFormContext } from "react-hook-form";
 import { TabWrapper } from "./TabWrapper";
 
 export function TabFive() {
-  const { watch } = useFormContext();
+  const {
+    watch,
+    formState: { errors },
+  } = useFormContext();
   const values = watch();
 
   const keys = Object.keys(values);
   const value = Object.values(values);
+
+  console.log(values, errors);
 
   return (
     <TabWrapper title="Preview">

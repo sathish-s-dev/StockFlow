@@ -4,6 +4,7 @@ import { ReactNode, useEffect, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { StepProgress } from "./StepsProgress";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 export interface Step {
   id: number;
@@ -43,6 +44,7 @@ export default function MultiStepForm() {
   const methods = useForm<FormData>({
     defaultValues,
     mode: "onChange",
+    resolver: zodResolver(formSchema),
   });
 
   const [currentStep, setCurrentStep] = useState(0);
@@ -79,7 +81,8 @@ export default function MultiStepForm() {
   return (
     <FormProvider {...methods}>
       <div className="w-full max-w-sm relative">
-        <form
+        <motion.form
+          layout
           onSubmit={methods.handleSubmit(onSubmit)}
           className="w-full flex flex-col gap-6 min-h-[650px] p-6 bg-white/10 backdrop-blur-3xl rounded-lg shadow"
         >
@@ -92,6 +95,7 @@ export default function MultiStepForm() {
 
           {/* Render Current Step */}
           {steps[currentStep].component}
+          {/* <ProfileForm /> */}
 
           {/* Navigation Buttons */}
           <div className="flex gap-4 justify-between mt-6 w-full">
@@ -110,7 +114,7 @@ export default function MultiStepForm() {
             {currentStep === steps.length - 1 ? (
               <button
                 type="submit"
-                className="w-full bg-emerald-500 text-white rounded hover:bg-emerald-600"
+                className="w-full bg-slate-900 text-white rounded hover:bg-slate-900"
               >
                 Submit
               </button>
@@ -118,20 +122,48 @@ export default function MultiStepForm() {
               <button
                 type="button"
                 onClick={nextStep}
-                className="w-full bg-emerald-500 text-white rounded hover:bg-emerald-600"
+                className="w-full bg-slate-900 text-white rounded hover:bg-slate-900"
               >
                 Next
               </button>
             )}
           </div>
-        </form>
+        </motion.form>
 
         {/* Background Motion Effects */}
-        <motion.div className="size-24 bg-emerald-500 absolute z-[-1] top-1/2 -translate-y-1/2 left-0 blur-2xl origin-center" />
-        <motion.div className="size-24 bg-red-500 absolute z-[-1] top-1/2 -translate-y-1/2 right-0 blur-2xl origin-center" />
+        <motion.div
+          animate={{ y: [-300, 300], x: [-30, 30] }}
+          transition={{ duration: 20 }}
+          className="size-24 bg-emerald-500 absolute z-[-1] top-1/2 -translate-y-1/2 left-0 blur-2xl origin-center"
+        />
+        <motion.div
+          animate={{ y: [300, -300], x: [-30, 30] }}
+          transition={{ duration: 20 }}
+          className="size-24 bg-red-500 absolute z-[-1] top-1/2 -translate-y-1/2 right-0 blur-2xl origin-center"
+        />
       </div>
     </FormProvider>
   );
 }
 
-
+// function ProfileForm() {
+//   const form = useForm<FormData>();
+//   return (
+//     <div className="flex flex-col gap-4">
+//       <FormField
+//         control={form.control}
+//         name="firstName"
+//         render={({ field }) => (
+//           <FormItem>
+//             <FormLabel>First Name</FormLabel>
+//             <FormControl>
+//               <Input placeholder="shadcn" {...field} />
+//             </FormControl>
+//             <FormDescription>This is your public display name.</FormDescription>
+//             <FormMessage />
+//           </FormItem>
+//         )}
+//       />
+//     </div>
+//   );
+// }
