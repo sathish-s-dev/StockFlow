@@ -7,7 +7,7 @@ const ProfilePage = () => {
       <SectionWrapper className="dark:text-white min-h-screen">
         <h1>Profile Page</h1>
 
-        <div className="w-full  py-24 flex justify-center items-center">
+        <div className="w-full flex justify-center items-center">
           <MultistepFrom />
         </div>
       </SectionWrapper>

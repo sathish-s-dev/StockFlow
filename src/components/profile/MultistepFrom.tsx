@@ -1,130 +1,137 @@
-import { useState } from "react";
+import { steps } from "@/config/stepsConfig";
 import { motion } from "motion/react";
+import { ReactNode, useEffect, useState } from "react";
+import { FormProvider, useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import { StepProgress } from "./StepsProgress";
 
-const steps = [
-  {
-    id: 1,
-    title: "Step 1",
-    description: "Description 1",
-  },
-  {
-    id: 2,
-    title: "Step 2",
-    description: "Description 2",
-  },
-  {
-    id: 3,
-    title: "Step 3",
-    description: "Description 3",
-    disabled: true,
-    onClick: () => {
-      if (window.confirm("Are you sure?")) {
-        alert("Confirmed!");
-      }
-    },
-  },
-];
+export interface Step {
+  id: number;
+  title: string;
+  component: ReactNode;
+}
+
+import { z } from "zod";
+
+const formSchema = z.object({
+  firstName: z.string().min(2, "First name must be at least 2 characters"),
+  lastName: z.string().min(2, "Last name must be at least 2 characters"),
+  email: z.string().email("Invalid email address"),
+  nativeLocation: z.string().min(3, "Enter a valid location"),
+  currentLocation: z.string().min(3, "Enter a valid location"),
+  photo: z
+    .any()
+    .refine((file) => file instanceof File, "Please upload a valid image")
+    .optional(),
+});
+
+export type FormData = z.infer<typeof formSchema>;
 
 export default function MultiStepForm() {
-  const [currentStep, setCurrentStep] = useState(1);
+  const storedData = sessionStorage.getItem("formData");
+  const defaultValues: FormData = storedData
+    ? JSON.parse(storedData)
+    : {
+        firstName: "",
+        lastName: "",
+        email: "",
+        nativeLocation: "",
+        currentLocation: "",
+        photo: null,
+      };
 
-  console.log((currentStep / steps.length) * 110);
+  const methods = useForm<FormData>({
+    defaultValues,
+    mode: "onChange",
+  });
 
-  const nextStep = () =>
+  const [currentStep, setCurrentStep] = useState(0);
+
+  const nextStep = async () => {
     setCurrentStep((prev) => (prev < steps.length - 1 ? prev + 1 : prev));
+  };
+
   const prevStep = () => setCurrentStep((prev) => (prev > 0 ? prev - 1 : prev));
 
+  const onSubmit = async (data: FormData) => {
+    console.log("Submitting Data:", data);
+
+    try {
+      const parsedData = formSchema.parse(data);
+      console.log("Validated Data:", parsedData);
+      toast.success("Data submitted successfully!");
+      sessionStorage.removeItem("formData");
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        toast.error(error.errors[0].message);
+      }
+    }
+  };
+
+  useEffect(() => {
+    const subscription = methods.watch((data) => {
+      sessionStorage.setItem("formData", JSON.stringify(data));
+    });
+
+    return () => subscription.unsubscribe();
+  }, [methods]);
+
   return (
-    <div className="max-w-lg mx-auto h-full min-h-[400px] w-full mt-10 p-6 bg-white shadow-lg rounded-lg">
-      <div className="flex w-full justify-between relative isolate">
-        {steps.map((step) => (
-          <button
-            key={step.id}
-            className={`flex items-center justify-center w-10 h-10 rounded-full ${
-              step.id <= currentStep ? "bg-blue-500 text-white" : "bg-gray-200"
-            }`}
-          >
-            {step.id}
-          </button>
-        ))}
-        <div className="absolute top-1/2 left-0 right-0 z-[-1]">
-          <div className="relative w-full h-1 bg-gray-200 rounded-full mb-6">
-            <motion.div
-              className="absolute h-1 bg-blue-500 rounded-full"
-              initial={{ width: "0%" }}
-              animate={{
-                width: `${(currentStep / steps.length) * 110}%`,
-              }}
-              transition={{ type: "spring", stiffness: 150, damping: 20 }}
-            />
+    <FormProvider {...methods}>
+      <div className="w-full max-w-sm relative">
+        <form
+          onSubmit={methods.handleSubmit(onSubmit)}
+          className="w-full flex flex-col gap-6 min-h-[650px] p-6 bg-white/10 backdrop-blur-3xl rounded-lg shadow"
+        >
+          <h1 className="text-2xl text-center font-semibold">
+            User Registration Form
+          </h1>
+
+          {/* Step Navigation */}
+          <StepProgress currentStep={currentStep} steps={steps} />
+
+          {/* Render Current Step */}
+          {steps[currentStep].component}
+
+          {/* Navigation Buttons */}
+          <div className="flex gap-4 justify-between mt-6 w-full">
+            <button
+              type="button"
+              onClick={prevStep}
+              className={`py-2 w-full bg-gray-50 border rounded ${
+                currentStep === 0
+                  ? "opacity-50 cursor-not-allowed bg-white"
+                  : "hover:bg-white bg-white"
+              }`}
+              disabled={currentStep === 0}
+            >
+              Back
+            </button>
+            {currentStep === steps.length - 1 ? (
+              <button
+                type="submit"
+                className="w-full bg-emerald-500 text-white rounded hover:bg-emerald-600"
+              >
+                Submit
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={nextStep}
+                className="w-full bg-emerald-500 text-white rounded hover:bg-emerald-600"
+              >
+                Next
+              </button>
+            )}
           </div>
-        </div>
+        </form>
+
+        {/* Background Motion Effects */}
+        <motion.div className="size-24 bg-emerald-500 absolute z-[-1] top-1/2 -translate-y-1/2 left-0 blur-2xl origin-center" />
+        <motion.div className="size-24 bg-red-500 absolute z-[-1] top-1/2 -translate-y-1/2 right-0 blur-2xl origin-center" />
       </div>
-      {/* Progress Bar */}
-
-      {/* Step Content */}
-      <motion.div
-        key={currentStep}
-        initial={{ opacity: 0, x: 50 }}
-        animate={{ opacity: 1, x: 0 }}
-        exit={{ opacity: 0, x: -50 }}
-        transition={{ duration: 0.5 }}
-      >
-        {currentStep === 0 && <StepOne />}
-        {currentStep === 1 && <StepTwo />}
-        {currentStep === 2 && <StepThree />}
-      </motion.div>
-
-      {/* Navigation Buttons */}
-      <div className="flex justify-between mt-6">
-        <button
-          onClick={prevStep}
-          className={`px-4 py-2 bg-gray-300 rounded ${
-            currentStep === 0
-              ? "opacity-50 cursor-not-allowed"
-              : "hover:bg-gray-400"
-          }`}
-          disabled={currentStep === 0}
-        >
-          Back
-        </button>
-        <button
-          onClick={nextStep}
-          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-        >
-          {currentStep === steps.length - 1 ? "Finish" : "Next"}
-        </button>
-      </div>
-    </div>
+    </FormProvider>
   );
 }
 
-function StepOne() {
-  return (
-    <div className="text-center">
-      {" "}
-      <h2 className="text-xl font-semibold">Personal Info</h2>{" "}
-      <p>Enter your personal details.</p>
-    </div>
-  );
-}
 
-function StepTwo() {
-  return (
-    <div className="text-center">
-      {" "}
-      <h2 className="text-xl font-semibold">Account Details</h2>{" "}
-      <p>Set up your account credentials.</p>
-    </div>
-  );
-}
-
-function StepThree() {
-  return (
-    <div className="text-center">
-      {" "}
-      <h2 className="text-xl font-semibold">Confirmation</h2>{" "}
-      <p>Review your information before submission.</p>
-    </div>
-  );
-}
