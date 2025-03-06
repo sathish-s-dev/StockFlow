@@ -37,7 +37,9 @@ export function TabFour() {
           name="photo"
           render={({ field: { ref } }) => (
             <FormItem>
-              <FormLabel>Select Photo</FormLabel>
+              <FormLabel className="bg-slate-800 px-8 py-3 rounded hover:cursor-pointer block text-white max-w-fit">
+                Select Photo
+              </FormLabel>
               <FormControl>
                 <Input
                   type="file"

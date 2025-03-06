@@ -28,6 +28,19 @@ export function TabTwo() {
           </FormItem>
         )}
       />
+      <FormField
+        control={form.control}
+        name="bio"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Bio</FormLabel>
+            <FormControl>
+              <Input placeholder="Please enter your bio" {...field} />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
     </TabWrapper>
   );
 }
