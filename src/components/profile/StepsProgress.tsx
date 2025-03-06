@@ -18,9 +18,9 @@ export function StepProgress({
         <motion.button
           key={step.id}
           type="button"
-          className={`flex items-center justify-center size-7 after:ring-4 after:shadow-lg after:shadow-white ring-red-500 after:rounded-full dark:text-white  transition duration-300  rounded-full after:-inset-1 after:bg-white after:z-[-1] relative after:absolute ${
+          className={`flex items-center justify-center size-7 after:ring-4 after:shadow-lg after:shadow-white ring-red-500 after:rounded-full transition duration-300  rounded-full after:-inset-1 after:bg-white after:z-[-1] relative after:absolute ${
             step.id <= currentStep
-              ? "bg-sky-600 dark:bg-gradient-to-b from-red-400 to-red-400  after:ring-sky-600 dark:after:ring-white text-white "
+              ? "bg-sky-600 dark:bg-gradient-to-b from-red-400 to-red-400  after:ring-sky-600 dark:after:ring-white text-white dark:text-white"
               : "bg-gray-50 after:ring-white dark:text-slate-800"
           }`}
         >

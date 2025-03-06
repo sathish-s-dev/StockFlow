@@ -12,7 +12,6 @@ import toast from "react-hot-toast";
 import { StepProgress } from "./StepsProgress";
 
 // import { formSchema } from "@/schemas/formSchema";
-import { useGSAP } from "@gsap/react";
 import { z } from "zod";
 import { formSchema, StepFormData } from "@/schemas/formSchema";
 
@@ -23,7 +22,7 @@ export interface Step {
 }
 
 export default function MultiStepForm() {
-  const storedData = sessionStorage.getItem("formData");
+  const storedData = sessionStorage.getItem("stepFormData");
   const defaultValues: StepFormData = storedData
     ? JSON.parse(storedData)
     : {
@@ -50,7 +49,23 @@ export default function MultiStepForm() {
 
   const prevStep = () => setCurrentStep((prev) => (prev > 0 ? prev - 1 : prev));
 
-  useGSAP(() => {});
+  // useGSAP(() => {
+  //   const timeline = gsap.timeline();
+  //   timeline
+  //     .from("#box", {
+  //       height: 10,
+  //     })
+  //     .to(
+  //       "#box",
+  //       {
+  //         width: 400,
+  //         height: 10,
+  //       },
+  //       0.5
+  //     )
+  //     .to("#box", {})
+  //     .to("#box", {});
+  // });
 
   useEffect(() => {
     const subscription = methods.watch((data) => {
@@ -70,9 +85,10 @@ export default function MultiStepForm() {
         />
         {/* Background Motion Effects */}
         <motion.div
-          animate={{ y: [-300, 300], x: [-30, 30] }}
-          transition={{ duration: 20 }}
-          className="size-24 bg-emerald-500 absolute z-[-1] top-1/2 -translate-y-1/2 left-0 blur-2xl origin-center"
+          id="box"
+          // animate={{ y: [-300, 300], x: [-30, 30] }}
+          // transition={{ duration: 20 }}
+          className="size-24 bg-emerald-500 absolute z-[-1] top-1/2 -translate-y-1/2 left-0  blur-sm origin-center"
         />
         <motion.div
           animate={{ y: [300, -300], x: [-30, 30] }}
@@ -120,22 +136,16 @@ function ProfileForm({
         User Registration Form
       </h1>
 
-      {/* Step Navigation */}
       <StepProgress currentStep={currentStep} steps={steps} />
-
-      {/* Render Current Step */}
       {steps[currentStep].component}
-      {/* <ProfileForm /> */}
-
-      {/* Navigation Buttons */}
       <div className="flex gap-4 justify-between mt-6 w-full">
         <button
           type="button"
           onClick={prevStep}
-          className={`py-2 w-full bg-gray-50 border rounded ${
+          className={`py-2 w-full border rounded hover:opacity-80 ${
             currentStep === 0
-              ? "opacity-50 cursor-not-allowed bg-white"
-              : "hover:bg-white bg-white"
+              ? "opacity-50 cursor-not-allowed border"
+              : " "
           }`}
           disabled={currentStep === 0}
         >
@@ -144,7 +154,7 @@ function ProfileForm({
         {currentStep === steps.length - 1 ? (
           <button
             type="submit"
-            className="w-full bg-slate-900 text-white rounded hover:bg-slate-900"
+            className="w-full bg-slate-900  dark:bg-white text-white rounded hover:bg-slate-900"
           >
             Submit
           </button>
@@ -152,7 +162,7 @@ function ProfileForm({
           <button
             type="button"
             onClick={nextStep}
-            className="w-full bg-slate-900 text-white rounded hover:bg-slate-900"
+            className="w-full bg-slate-900 text-white dark:bg-white hover:opacity-95 dark:text-slate-900 rounded hover:bg-slate-900"
           >
             Next
           </button>
