@@ -6,8 +6,18 @@ import drawerReducer from "@/features/drawerSlice";
 import WatchListReducer from "@/features/watchlistSlice";
 import themeReducer from "@/features/themeSlice";
 import storage from "redux-persist/lib/storage"; // LocalStorage
-import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE } from "redux-persist";
+import {
+  FLUSH,
+  PAUSE,
+  PERSIST,
+  persistReducer,
+  persistStore,
+  PURGE,
+  REGISTER,
+  REHYDRATE,
+} from "redux-persist";
 import { alphaVantageApi } from "@/services/alphaVantageApi";
+// import { mockStockApi } from "@/services/mockStockGraphqlApi";
 import { mockStockApi } from "@/services/mockStockApi";
 
 const persistConfig = {
