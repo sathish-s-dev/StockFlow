@@ -3,7 +3,7 @@ import StockCard from "@/components/home/StockCard";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import { SectionTopbar } from "@/components/home/SectionTopBar";
 import {
-  useGetCandlestickDataQuery,
+  // useGetCandlestickDataQuery,
   useGetStocksListQuery,
 } from "@/services/mockStockApi";
 import type { RootState } from "@/store/store";
@@ -31,18 +31,18 @@ const dummyStock = {
 };
 
 const Home = () => {
-  const { data: candlestick, isLoading: isCandleLoading } =
-    useGetCandlestickDataQuery();
+  // const { data: candlestick, isLoading: isCandleLoading } =
+  //   useGetCandlestickDataQuery();
 
-  console.log(candlestick, isCandleLoading, "candlestick");
-  const closeData = candlestick?.map((item) => {
-    return {
-      close: item.close,
-      date: item.date,
-    };
-  });
+  // console.log(candlestick, isCandleLoading, "candlestick");
+  // const closeData = candlestick?.map((item) => {
+  //   return {
+  //     close: item.close,
+  //     date: item.date,
+  //   };
+  // });
 
-  console.log(closeData, "closeData");
+  // console.log(closeData, "closeData");
 
   const watchlistStocks = useSelector(
     (state: RootState) => state.watchlist.watchlistState

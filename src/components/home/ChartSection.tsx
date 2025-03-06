@@ -1,14 +1,12 @@
-import { filterData } from "@/lib/utils/filterData";
-import formatCandlestickData from "@/lib/utils/formatCandlestickData";
-import { useGetCandlestickDataQuery } from "@/services/mockStockApi";
+// import { useGetCandlestickDataQuery } from "@/services/mockStockApi";
 import type { Stock } from "@/types";
 import { useState } from "react";
+import { Link } from "react-router";
 import HomeChart from "../ui/HomeChart";
 import SectionHeading from "../ui/SectionHeading";
 import SectionWrapper from "../ui/SectionWrapper";
-import StockHistorySelection from "./StockHistorySelection";
 import Text from "../ui/Text";
-import { Link } from "react-router";
+import StockHistorySelection from "./StockHistorySelection";
 
 function ChartSection({ stock }: { stock: Stock }) {
   const [chartDuration, setChartDuration] = useState({
@@ -17,15 +15,15 @@ function ChartSection({ stock }: { stock: Stock }) {
   });
   // const [symbol] = useState("AAPL");
 
-  const { data: candlestick, isLoading: isCandleLoading } =
-    useGetCandlestickDataQuery();
+  // const { data: candlestick, isLoading: isCandleLoading } =
+  //   useGetCandlestickDataQuery();
 
-  console.log(candlestick, isCandleLoading, "candlestick");
-  const closeData = candlestick?.map(formatCandlestickData);
+  // console.log(candlestick, isCandleLoading, "candlestick");
+  // const closeData = candlestick?.map(formatCandlestickData);
 
-  const dataValue = filterData(closeData, chartDuration.value);
+  // const dataValue = filterData(closeData, chartDuration.value);
 
-  console.log(dataValue);
+  // console.log(dataValue);
 
   return (
     <SectionWrapper className=" flex flex-col gap-2 md:col-span-2">
