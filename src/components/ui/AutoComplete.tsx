@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
-// import { useGetSymbolsQuery } from "@/services/mockStockApi";
+import { useGetSymbolsQuery } from "@/services/mockStockApi";
 import { debounce } from "@/lib/utils/debounce";
 
 interface AutocompleteProps {
@@ -18,8 +18,8 @@ export default function Autocomplete({
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const [showDropdown, setShowDropdown] = useState(false);
 
-  // const { data: symbols } = useGetSymbolsQuery();
-  const symbols = "";
+  const { data: symbols } = useGetSymbolsQuery();
+  // const symbols = "";
   const availableOptions = symbols || options;
 
   // Debounced filter function

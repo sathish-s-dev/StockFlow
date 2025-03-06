@@ -63,7 +63,7 @@ const ApexChart = ({ chartDuration }: ApexChartProps) => {
     setFilteredData(filtered);
   }, [data, chartDuration, setFilteredData]);
 
-  console.log(filteredData, "filtered data from stock details");
+  // console.log(filteredData, "filtered data from stock details");
 
   // Memoize chart data
   const chartData = useMemo(() => {

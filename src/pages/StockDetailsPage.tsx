@@ -43,17 +43,17 @@ const StockDetails = () => {
 
   if (!data) return null;
 
-  const changePercentage = +data[0].change_percent.toFixed(2);
+  const changePercentage = +data.change_percent.toFixed(2);
 
   const isINWatchlist = watchlist?.some(
-    (stock) => stock.symbol === data[0].symbol
+    (stock) => stock.symbol === data.symbol
   );
 
   console.log(isINWatchlist, "stock is already in watchlist");
 
   // console.log(changePercentage < 0);
 
-  // const priceRange = data[0].range.split("-");
+  // const priceRange = data.range.split("-");
 
   return (
     <div className="grid gap-4 p-4 px-8">
@@ -62,12 +62,12 @@ const StockDetails = () => {
           <div className="flex gap-2 items-center justify-center py-2">
             <BackButton />
             <img
-              src={data[0].logo}
+              src={data.logo}
               alt="logo"
               className="w-14 p-1 invert dark:invert-0"
             />
             <div>
-              <SectionHeading title={data[0].company} />
+              <SectionHeading title={data.company} />
               <p
                 className={cn("text-sm text-gray-700 dark:text-gray-100")}
                 style={{
@@ -84,7 +84,7 @@ const StockDetails = () => {
           <div className="flex gap-2">
             <button
               onClick={() => {
-                const details = dispatch(addToWatchlist(data[0]));
+                const details = dispatch(addToWatchlist(data));
                 console.log(details);
               }}
               disabled={isINWatchlist}
@@ -104,7 +104,7 @@ const StockDetails = () => {
               <button
                 onClick={() => {
                   const details = dispatch(
-                    removeStockFromWatchlist(data[0].symbol)
+                    removeStockFromWatchlist(data.symbol)
                   );
                   console.log(details);
                 }}
@@ -116,7 +116,7 @@ const StockDetails = () => {
           </div>
         </div>
       </div>
-      <StockDetailsSection data={data[0]} />
+      <StockDetailsSection data={data} />
       <SectionHeading title="Chart" />
       <SectionWrapper>
         <StockHistorySelection
@@ -141,20 +141,20 @@ function StockDetailsSection({ data }: { data: Stock }) {
       <div className="flex flex-col md:flex-row flex-wrap gap-4 justify-between p-4">
         <div className="flex flex-col gap-2 text-gray-900 dark:text-gray-100">
           <p className="text-sm">Market Cap</p>
-          <p className="text-xl">&#36; {data.market_cap}</p>
+          <p className="text-xl"> ₹ {data.market_cap}</p>
           <p></p>
         </div>
         <div className="flex flex-col gap-2 text-gray-900 dark:text-gray-100">
           <p className="text-sm">Volueme</p>
-          <p className="text-xl">{data.volume}</p>
+          <p className="text-xl">₹ {data.volume}</p>
         </div>
         <div className="flex flex-col gap-2 text-gray-900 dark:text-gray-100">
           <p className="text-sm">Fully Dilutted Market Cap</p>
-          <p className="text-xl">&#36; {data.market_cap}</p>
+          <p className="text-xl"> ₹ {data.market_cap}</p>
         </div>
         <div className="flex flex-col gap-2 text-gray-900 dark:text-gray-100">
           <p className="text-sm">Market Price</p>
-          <p className="text-xl">&#36; {data.current_price}</p>
+          <p className="text-xl"> ₹ {data.current_price}</p>
         </div>
       </div>
     </SectionWrapper>
